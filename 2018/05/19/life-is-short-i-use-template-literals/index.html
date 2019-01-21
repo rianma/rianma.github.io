@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+            人生苦短，我用 ES6 模板 | 
+        
+        rianma
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="rianma">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",template literals">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="rianma">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://myan.im">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="人生苦短，我用 ES6 模板 | rianma">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="template literals"> 
+
+    
+        <meta property="article:published_time" content="5月 19, 2018">
+        <meta property="article:modified_time" content="1月 18, 2019">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="人生苦短，我用 ES6 模板 | rianma">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="http://myan.im">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://myan.im/2018/05/19/life-is-short-i-use-template-literals/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rianma",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "rianma",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "人生苦短，我用 ES6 模板",
+    "url": "http://myan.im/2018/05/19/life-is-short-i-use-template-literals/index.html",
+    "datePublished": "5月 19, 2018",
+    "dateModified": "1月 18, 2019",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://myan.im"
+    }
+}
+</script>
+
+
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    .footer-sns-facebook {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNjU3LjYgODcuOGw0LjggMy44djU1LjJjMCA1NC42IDAgNTUuMi00LjYgNTkuNi00LjQgNC40LTYgNC42LTUwLjIgNS42bC00NS42IDEtNy4yIDUuNmMtMTAuNCA4LTE2LjggMTcuMi0xOS4yIDI3LjQtMSA1LTEuOCAyNC44LTEuOCA0NCAuMiAzOCAxLjYgNDQuNiAxMC44IDQ4IDIuOCAxLjIgMjguNCAyIDU2LjggMiA0Ny44IDAgNTIgLjIgNTYuMiAzLjhsNC44IDMuOHY1NS4yYzAgNTQuNiAwIDU1LjItNC42IDU5LjYtNC40IDQuNi01LjQgNC42LTU3IDUuMi0yOC44LjItNTQuNC44LTU2LjggMS40LTIuNC42LTUuNiAzLTYuOCA1LjQtMS44IDMuMi0yLjQgNDEuNC0yLjYgMTQzLjJsLS4yIDEzOC44LTUuNiA0LjgtNS42IDQuOEg2MDljLTUyLjQgMC01Mi44IDAtNTguMi00LjZsLTUuNC00LjYtLjItMTQwLjYtLjItMTQwLjYtNC44LTMuOGMtNC4yLTMuNC04LTMuOC0zNS42LTMuOC0zMi44IDAtNDEtMS44LTQzLjYtMTAtLjYtMi4yLTEuMi0yNS40LTEuMi01MS40IDAtNjAuOC0uMi01NyAzLjQtNjEuNiAyLjgtMy42IDYtNCAzNy44LTUgMzMtMSAzNS4yLTEuMiAzOS40LTUuNiA0LjYtNC40IDQuNi01LjIgNS44LTcxIDEuMi03My40LjItNjcuMiAxNi42LTk5LjQgOC0xNS44IDEyLjgtMjIgMjgtMzcgMTUuMi0xNS4yIDIxLjQtMTkuNiAzOC4yLTI4IDExLTUuNCAyNC0xMSAyOS0xMi4yIDYuMi0xLjggMjguNi0yLjYgNzEuMi0yLjYgNTguNi0uMiA2Mi42IDAgNjcgMy42eiIvPjwvc3ZnPg==);
+    }
+    
+    
+    .footer-sns-twitter {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNTMyLjggMjA1YzEwIDQgMjMgMTAuOCAyOC44IDE1LjIgMTIuNiA5LjIgMTYuNiAxMC42IDI5LjQgOS40IDYuNi0uNiAxMy0zLjIgMjAuNC04LjIgMTEuMi03LjYgMTkuNC05LjIgMjMuNi01IDMuNiAzLjYgMi44IDktMi44IDE4LjYtNy4yIDEyLjQtNiAxOC44IDQuMiAyNC4yIDQuNCAyLjIgOC4yIDUuNiA4LjYgNy40IDEgNC44LTEyLjYgMjQuMi0yMiAzMS44LTExLjggOS4yLTE3LjIgMjIuNi0xOS42IDQ3LjgtNC44IDUwLjQtNy44IDY2LjYtMTYuNCA4NS40LTMgNy03IDE3LjgtOC44IDI0LTEuOCA2LjQtNSAxNC42LTcuNCAxOC40LTIuMiAzLjgtNy40IDEzLTExLjQgMjAuNC0xNy4yIDMwLjgtNDMuNCA2MS40LTcxLjQgODMuOC0yNS42IDIwLjQtNDYgMzMuMi02NC4yIDQwLjItOC40IDMuMi0xOCA3LjYtMjEuNCA5LjYtNy40IDQuNi0yMi40IDguNi01Ny4yIDE1LTYyLjIgMTEuNi03OS4yIDExLjQtMTM1LjYtMS0zMi40LTctMzguNi05LTUyLTE2LjgtMjEuNC0xMi42LTI0LjItMTQuOC0yNC4yLTE5LjQgMC02LjIgMTAuMi05LjIgMzUtMTAuNCAyMi40LTEgMjguNi0yLjYgNTctMTQuMiAyMy44LTkuOCAyOS40LTEyLjggMzAuNC0xNi44IDIuMi04LjItMy0xMy4yLTI2LjgtMjUuNC0yNS44LTEzLjItMzIuMi0xOC40LTQzLjgtMzUuOC05LTEzLjYtMTAtMjEuMi0zLjYtMzMuNiA1LjQtMTAuOCAzLjYtMTUtMTEuOC0yNS40LTktNi0xNC0xMS42LTIwLjgtMjIuNi0yMy40LTM3LjgtMjUtNTAuOC03LjItNTkuOCA0LjgtMi40IDkuNC01LjQgMTAuMi02LjYgMi44LTQuMi0uNC0xNS42LTguNC0yOS0xMS42LTE5LjYtMTMuMi0yNS44LTEzLjItNTUuMiAwLTI4LjggMi42LTM3LjggMTItNDAuMiA5LTIuMiAxNC44IDEgMzUuNiAyMC4yIDI0LjggMjIuOCA0My42IDM2LjYgNjIuOCA0NS44IDggMy44IDE3LjggOS4yIDIyIDEyIDQuMiAyLjggMTQuOCA3IDIzLjQgOS4yIDguNiAyLjIgMjQuMiA2LjggMzQuOCAxMC4yIDEzLjQgNC40IDIzLjYgNi40IDMzIDYuNiAxMi44LjIgMTQuMi0uMiAxOC42LTUuNCA0LTQuOCA0LjgtNy44IDQuOC0xOS4yIDAtMTQuNCA1LjYtMzkuNiAxMS4yLTUwLjYgNC4yLTguNCAyOS4yLTM0LjIgMzkuOC00MS40IDcuOC01LjQgMzUuNi0xNiA1Mi0yMCAxNC4yLTMuNiAzMi42LTEuMiA1Mi40IDYuOHoiLz48L3N2Zz4=);
+    }
+    
+    
+    .footer-sns-gplus {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHpNNDMwIDI5NS40YzQwLjYgMTUuNCA1Ni42IDIzLjggNzIuNiAzOC40IDYuOCA2LjIgNy4yIDE1LjIgMSAyMy40LTYuMiA4LTMzLjYgMzMuOC0zOSAzNi42LTUuNiAyLjgtMTcuNiAyLjgtMjMuMi0uMi0yLjQtMS4yLTguMi01LjItMTMtOC44LTExLjItOC42LTI0LjYtMTEuMi01NS4yLTExLjItMjcuNCAwLTQwLjYgMi42LTUyLjIgMTAuNC00LjQgMi44LTEyLjIgNy42LTE3LjIgMTAuNi0yMyAxMy4yLTUxLjQgNTUtNTUuOCA4Mi40LTIuNiAxNS42LTIuNCAzNC44LjIgNTEgMi44IDE3LjQgMTkuOCA0OC44IDM1LjIgNjUuMiAxNiAxNi42IDQ1IDMzLjYgNjIuOCAzNi42IDI2LjggNC40IDY1LjggMS42IDc5LjQtNS44IDIwLjYtMTEuNCAzMS0xOSA0MS0zMC40IDE4LjgtMjEuNiAyMy40LTM0LjIgMTUuNi00My44LTMuOC00LjgtNC40LTQuOC01MS01LjgtNjAuOC0xLjItNTYuMiAyLjItNTYuMi00My4yIDAtMzIuNC4yLTMzLjIgNC44LTM3IDQuNC0zLjYgOS0zLjggOTItMy44IDc5IDAgODcuOC40IDk0LjIgMy42IDExLjIgNS42IDEzIDExLjQgMTIuOCA0My40IDAgMjUuNC0uOCAzMC44LTcuNiA1OC00IDE2LjYtOS44IDM0LTEyLjYgMzktMi44IDUtOC4yIDE0LjItMTEuNiAyMC42LTguNCAxNS40LTI3LjIgMzYuOC00MC44IDQ2LjYtNS44IDQuNC0xMy44IDEwLjItMTcuNiAxMy4yLTMuOCAzLTExIDctMTYuMiA4LjgtNS4yIDEuOC0xNi4yIDYuNC0yNC40IDEwLTIyLjQgOS42LTM0LjggMTEuNi03MyAxMS42LTM3LjYuMi00Ny0xLjQtNzEtMTItOC4yLTMuNi0xNy42LTcuMi0yMC44LTgtMTUuOC0zLjgtNjctNDUuMi03Ny44LTYyLjgtMi4yLTMuOC03LjYtMTEuNi0xMS44LTE3LjItNC4yLTUuNC05LTE0LTEwLjYtMTktMS44LTQuOC02LjItMTYtMTAtMjQuOC0zLjYtOC44LTcuOC0yMi4yLTkuMi0yOS42LTMuMi0xOC44LTEuNC03OS40IDIuOC05MS40IDEzLjgtNDAuNiAzNS42LTc4IDU4LjgtMTAwLjIgMTQtMTMuNiA0Ny4yLTM2LjQgNTgtMzkuOCA0LjItMS40IDEzLjQtNS4yIDIwLjYtOC40IDIyLTEwIDMyLjgtMTEuNiA3Ni0xMSAzMy44LjYgNDAuNCAxLjIgNTAgNC44em0zNDAuOCA4MC44YzggMy42IDkuNiAxMS4yIDkuMiAzOS4yLS42IDM0LjQtLjYgMzQgNSAzOS42IDQuOCA1IDUuNCA1IDM3LjYgNSA0My40IDAgNDQuNC44IDQzLjIgMzYuMi0uOCAxNy0xLjIgMTguNC02LjQgMjMtNS40IDQuNi02LjYgNC44LTM3LjYgNC44LTMxLjIgMC0zMiAuMi0zNi44IDUtNS42IDUuNC01LjYgNC40LTUgNDEuMi40IDI2LjQuMiAyNy40LTQuNiAzMy00LjggNS42LTYgNS44LTI0LjQgNi40LTIwLjguOC0yOS42LTEuNC0zMy40LTguNC0xLjQtMi42LTItMTUuNi0xLjgtMzUuNi40LTMxLjIuNC0zMS42LTQuNi0zNi42cy01LjYtNS0zNi01Yy0xOC44IDAtMzMtLjgtMzYtMi4yLTcuNi0zLjYtOS42LTExLjItOC44LTMzLjguOC0yOC4yLjQtMjggNDEtMjggNDUuNCAwIDQ1LjQgMCA0NC42LTQyLjYtLjYtMzMtLjYtMzMgNS0zOC40IDQuNC00LjYgNi4yLTUgMjQuOC01IDExIDAgMjIuMiAxIDI1IDIuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+
+    <style>
+        @font-face {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 300;
+            src: url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.eot);
+            src: local('Roboto'),local('Roboto-Normal'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.eot?#iefix) format('embedded-opentype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.woff2) format('woff2'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.woff) format('woff'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.ttf) format('truetype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.svg#Roboto) format('svg')
+        }
+
+        @font-face {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: regular;
+            src: url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.eot);
+            src: local('Roboto'),local('Roboto-Normal'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.eot?#iefix) format('embedded-opentype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.woff2) format('woff2'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.woff) format('woff'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.ttf) format('truetype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.svg#Roboto) format('svg')
+        }
+
+        @font-face {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            src: url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.eot);
+            src: local('Roboto'),local('Roboto-Normal'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.eot?#iefix) format('embedded-opentype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.woff2) format('woff2'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.woff) format('woff'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.ttf) format('truetype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.svg#Roboto) format('svg')
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/MaterialIcons-Regular.eot);
+            src: url(https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/MaterialIcons-Regular.woff2) format('woff2'),url(https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/MaterialIcons-Regular.woff) format('woff'),url(https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/MaterialIcons-Regular.ttf) format('truetype')
+        }
+    </style>
+
+
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Analytics -->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116305930-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116305930-1');
+</script>
+
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础特性"><span class="post-toc-number">1.</span> <span class="post-toc-text">基础特性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#与传统模板引擎对比"><span class="post-toc-number">2.</span> <span class="post-toc-text">与传统模板引擎对比</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#走向进阶——给模板加上标签"><span class="post-toc-number">3.</span> <span class="post-toc-text">走向进阶——给模板加上标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#超越模板字符串"><span class="post-toc-number">4.</span> <span class="post-toc-text">超越模板字符串</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用例-1：使用-String-raw-保留原始字符串"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">用例 1：使用 String.raw 保留原始字符串</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用例-2：从标签模板到-HTML-字符串"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">用例 2：从标签模板到 HTML 字符串</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用例-3：从模板标签到-DOM-元素"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">用例 3：从模板标签到 DOM 元素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用例-4：异步操作"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">用例 4：异步操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用例-5：DSL"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">用例 5：DSL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#案例-1：DOM-选择器"><span class="post-toc-number">4.5.1.</span> <span class="post-toc-text">案例 1：DOM 选择器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#案例-2：Shell-脚本"><span class="post-toc-number">4.5.2.</span> <span class="post-toc-text">案例 2：Shell 脚本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#案例-3：正则表达式构造器"><span class="post-toc-number">4.5.3.</span> <span class="post-toc-text">案例 3：正则表达式构造器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#案例-4：国际化与本地化"><span class="post-toc-number">4.5.4.</span> <span class="post-toc-text">案例 4：国际化与本地化</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更多探索"><span class="post-toc-number">5.</span> <span class="post-toc-text">更多探索</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://user-gold-cdn.xitu.io/2018/5/19/16376fda123c6427)">
+    
+            <p class="article-headline-p">
+                人生苦短，我用 ES6 模板
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>rianma</strong>
+        <span>5月 19, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/template-literals/">template literals</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=人生苦短，我用 ES6 模板&url=http://myan.im/2018/05/19/life-is-short-i-use-template-literals/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=人生苦短，我用 ES6 模板&url=http://myan.im/2018/05/19/life-is-short-i-use-template-literals/index.html&via=rianma" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://myan.im/2018/05/19/life-is-short-i-use-template-literals/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://myan.im/2018/05/19/life-is-short-i-use-template-literals/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>ES6（ES2015）为 JavaScript 引入了许多新特性，其中与字符串处理相关的一个新特性——模板字面量，提供了多行字符串、字符串模板的功能，相信很多人已经在使用了。模板字面量的基本使用很简单，但大多数开发者还是仅仅把它当成字符串拼接的语法糖来使用的，实际上它的能力比这要强大得多哦。夸张一点地说，这可能是 ES6 这么多特性中，最容易被低估的特性了。Here is why。</p>
+<h2 id="基础特性"><a href="#基础特性" class="headerlink" title="基础特性"></a>基础特性</h2><p>模板字面量在 ES2015 规范中叫做 <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-template-literals" target="_blank" rel="noopener">Template Literals</a>，在规范文档更早的版本中叫 <em>Template Strings</em>，所以我们见过的中文文档很多也有把它写成 <em>模板字符串</em> 的，有时为表述方便也非正式地简称为 ES6 模板。</p>
+<p>在 ES6 之前的 JavaScript，字符串作为基本类型，其在代码中的表示方法只有将字符串用引号符（单引号 ‘ 或 双引号 “）包裹起来，ES6 模板字面量（下文简称 ES6 模板）则使用反撇号符（`）包裹作为字符串表示法。</p>
+<p>两个反撇号之间的常规字符串保持原样，如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">`hello world`</span> === <span class="string">"hello world"</span>  <span class="comment">// --&gt; true</span></span><br><span class="line"><span class="string">`hello "world"`</span> === <span class="string">'hello "world"'</span> <span class="comment">// --&gt; true</span></span><br><span class="line"><span class="string">`hello 'world'`</span> === <span class="string">"hello 'world'"</span> <span class="comment">// --&gt; true</span></span><br><span class="line"><span class="string">`\``</span> <span class="comment">// --&gt; "`" // --&gt; true</span></span><br></pre></td></tr></table></figure>
+<p>换行符也只是一个字符，因此模板字面量也自然就支持多行字符 ：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`TODO LIST:</span></span><br><span class="line"><span class="string">    * one</span></span><br><span class="line"><span class="string">    * two</span></span><br><span class="line"><span class="string">`</span>)</span><br><span class="line"><span class="comment">// TODO LIST:</span></span><br><span class="line"><span class="comment">//     * one</span></span><br><span class="line"><span class="comment">//     * two</span></span><br></pre></td></tr></table></figure>
+<p>两个反撇号之间以  <code>${expression}</code> 格式包含任意 JavaScript 表达式，该 expression 表达式的值会转换为字符串，与表达式前后的字符串拼接。expression 展开为字符串时，使用的是 <code>expression.toString()</code> 函数。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">"Alice"</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> b = <span class="number">2</span></span><br><span class="line"><span class="keyword">const</span> fruits = [<span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'banana'</span>]</span><br><span class="line"><span class="keyword">const</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>`</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`1 + 2 = <span class="subst">$&#123;a + b&#125;</span>`</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`INFO: <span class="subst">$&#123;now&#125;</span>`</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`Remember to bring: <span class="subst">$&#123; fruits.join(<span class="string">', '</span>) &#125;</span>.`</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`1 &lt; 2 <span class="subst">$&#123; <span class="number">1</span> &lt; <span class="number">2</span> ? <span class="string">'✔︎'</span> : <span class="string">'✘'</span>&#125;</span>`</span>)</span><br><span class="line"><span class="comment">// Hello Alice</span></span><br><span class="line"><span class="comment">// 1 + 2 = 3</span></span><br><span class="line"><span class="comment">// INFO: Sun May 13 2018 22:28:26 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="comment">// Remember to bring: apple, orange, banana.</span></span><br><span class="line"><span class="comment">// 1 &lt; 2 ✔︎</span></span><br></pre></td></tr></table></figure>
+<p>正因为 expression 可以是 <em>任意 JavaScript 表达式</em> ，而任意一个模板字符串本身也是一个表达式，所以模板中的 expression 可以嵌套另一个模板。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'banana'</span>]</span><br><span class="line"><span class="keyword">const</span> quantities = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`I got <span class="subst">$&#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">    fruits</span></span></span><br><span class="line"><span class="string"><span class="subst">        .map((fruit, index) =&gt; <span class="string">`<span class="subst">$&#123;quantities[index]&#125;</span> <span class="subst">$&#123;fruit&#125;</span>s`</span>)</span></span></span><br><span class="line"><span class="string"><span class="subst">        .join(<span class="string">', '</span>)</span></span></span><br><span class="line"><span class="string"><span class="subst">&#125;</span>`</span>)</span><br><span class="line"><span class="comment">// I got 4 apples, 5 oranges, 6 bananas</span></span><br></pre></td></tr></table></figure>
+<h2 id="与传统模板引擎对比"><a href="#与传统模板引擎对比" class="headerlink" title="与传统模板引擎对比"></a>与传统模板引擎对比</h2><p>从目前的几个示例，我们已经掌握了 ES6 模板的基础功能，但已足够见识到它的本领。通过它我们可以很轻易地进行代码重构，让字符串拼接的代码不再充满乱七八糟的单引号、双引号、<code>+</code> 操作符还有反斜杠 <code>\</code>，变得清爽很多。</p>
+<p>于是我们很自然地想到，在实际应用中字符串拼接最复杂的场景——HTML 模板上，如果采用 ES6 模板是否可以胜任呢？传统上我们采用专门的模板引擎做这件事情，不妨将 ES6 模板与模版引擎做对比。我们选择 <code>lodash</code> 的 <code>_.template</code> 模板引擎，这个引擎虽不像 mustache、pug 大而全，但提供的功能已足够完备，我们就从它的几个核心特性和场景为例，展开对比。</p>
+<p>第 1，基本的字符串插值。<code>_.template</code> 使用 <code>&lt;%= expression %&gt;</code> 作为模板插值分隔符，expression 的值将会按原始输出，与 ES6 模板相同。所以在这一个特性上，ES6 模板是完全胜任的。</p>
+<ul>
+<li><p>lodash</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> compiled = _.template(<span class="string">'hello &lt;%= user %&gt;!'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(compiled(&#123; <span class="attr">user</span>: <span class="string">'fred'</span> &#125;))</span><br><span class="line"><span class="comment">// hello fred</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ES6 模板</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> greeting = <span class="function"><span class="params">data</span> =&gt;</span> <span class="string">`hello <span class="subst">$&#123;data.user&#125;</span>`</span></span><br><span class="line"><span class="built_in">console</span>.log(greeting(&#123; <span class="attr">user</span>: <span class="string">'fred'</span> &#125;))</span><br><span class="line"><span class="comment">// hello fred</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>第 2，字符串转义输出，这是 HTML 模板引擎防范 XSS 的标配功能，其原理就是要将插值表达式的值中包含的 <code>&lt;</code>、<code>&gt;</code> 这种可能用于 XSS 攻击的字符转义为 HTML Entity。要让 lodash 输出转义后的插值表达式，使用 <code>&lt;%- expression %&gt;</code> 语法即可；而如果要使用 ES6 模板方案，就要靠自己实现一个单独的函数调用了。在下面的示例代码中，就定义了简单的 escapeHTML 函数，在模板字符串中调用该函数对字符串进行转义。</p>
+<p>在这个特性上，ES6 可以的确可以做到相同的效果，但代价是要自己定义转义函数并在表达式中调用，使用起来不如模板引擎封装好的接口方便。</p>
+<ul>
+<li><p>lodash</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> compiled = _.template(<span class="string">'&lt;b&gt;&lt;%- value %&gt;&lt;/b&gt;'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ES6 模板</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> entityMap = &#123;</span><br><span class="line">    <span class="string">'&amp;'</span>: <span class="string">'&amp;amp;'</span>,</span><br><span class="line">    <span class="string">'&lt;'</span>: <span class="string">'&amp;lt;'</span>,</span><br><span class="line">    <span class="string">'&gt;'</span>: <span class="string">'&amp;gt;'</span>,</span><br><span class="line">    <span class="string">'"'</span>: <span class="string">'&amp;quot;'</span>,</span><br><span class="line">    <span class="string">"'"</span>: <span class="string">'&amp;#39;'</span>,</span><br><span class="line">    <span class="string">'/'</span>: <span class="string">'&amp;#x2F;'</span>,</span><br><span class="line">    <span class="string">'`'</span>: <span class="string">'&amp;#x60;'</span>,</span><br><span class="line">    <span class="string">'='</span>: <span class="string">'&amp;#x3D;'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> escapeHTML = <span class="function"><span class="params">string</span> =&gt;</span> <span class="built_in">String</span>(string).replace(<span class="regexp">/[&amp;&lt;&gt;"'`=\/]/g</span>, (s) =&gt; entityMap[s]);</span><br><span class="line"><span class="keyword">const</span> greeting = <span class="function"><span class="params">data</span> =&gt;</span> <span class="string">`hello <span class="subst">$&#123;escapeHTML(data.user)&#125;</span>`</span></span><br><span class="line"><span class="built_in">console</span>.log(greeting(&#123; <span class="attr">user</span>: <span class="string">'&lt;script&gt;alert(0)&lt;/script&gt;'</span>&#125;));</span><br><span class="line"><span class="comment">// hello &amp;lt;script&amp;gt;alert(0)&amp;lt;&amp;#x2F;script&amp;gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>第 3，模板内嵌 JavaScript 语句，也就是模板引擎支持通过在模板中执行 JavaScript 语句，生成 HTML。说白了其原理与世界上最好的语言 php 的 idea 是一样的。在 lodash 模板中，使用 <code>&lt;% statement %&gt;</code> 就可以执行 JS 语句，一个最典型的使用场景是使用 for 循环在模版中迭代数组内容。</p>
+<p>但 ES6 模板中的占位符 <code>${}</code> 只支持插入表达式，所以要在其中直接执行 for 循环这样的 JavaScript 语句是不行的。但是没关系，同样的输出结果我们用一些简单的技巧一样可以搞定，例如对数组的处理，我们只要善用数组的 <code>map</code>、 <code>reduce</code>、<code>filter</code> ，令表达式的结果符合我们需要即可。</p>
+<ul>
+<li><p>lodash</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 使用 for 循环语句，迭代数组内容并输出 */</span></span><br><span class="line"><span class="keyword">const</span> compiled = _.template(<span class="string">'&lt;ul&gt;&lt;% for (var i = 0; i &lt; users.length; i++) &#123; %&gt;&lt;li&gt;&lt;%= list[i] %&gt;&lt;/li&gt;&lt;% &#125; %&gt;&lt;/ul&gt;'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(compiled(&#123; <span class="attr">users</span>: [<span class="string">'fred'</span>, <span class="string">'barney'</span>] &#125;))</span><br><span class="line"><span class="comment">// &lt;ul&gt;&lt;li&gt;fred&lt;/li&gt;&lt;li&gt;barney&lt;/li&gt;&lt;/ul&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ES6 模板</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> listRenderer = <span class="function"><span class="params">data</span> =&gt;</span> <span class="string">`&lt;ul&gt;<span class="subst">$&#123;data.users.map(user =&gt; <span class="string">`&lt;li&gt;<span class="subst">$&#123;user&#125;</span>&lt;/li&gt;`</span>).join(<span class="string">''</span>)&#125;</span>&lt;/ul&gt;`</span></span><br><span class="line"><span class="built_in">console</span>.log(listRenderer(&#123; <span class="attr">users</span>: [<span class="string">'fred'</span>, <span class="string">'barney'</span>]&#125;))</span><br><span class="line"><span class="comment">// &lt;ul&gt;&lt;li&gt;fred&lt;/li&gt;&lt;li&gt;barney&lt;/li&gt;&lt;/ul&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在以上这 3 个示例场景上，我们发现 lodash 模板能做的事，ES6 模板也都可以做到，那是不是可以抛弃模板引擎了呢？</p>
+<p>的确，如果在开发中只是使用以上这些基本的模板引擎功能，我们可以确实可以直接使用 ES6 模板做替换，API 更轻更简洁，还节省了额外引入一个模板库的成本。</p>
+<p>但如果我们使用的是 pug、artTemplate、Handlebars 这一类大而全的模板引擎，使用 ES6 模板替换就不一定明智了。尤其是这些模板引擎在服务器端场景下的模板缓存、管道输出、模板文件模块化管理等特性，ES6 模板本身都不具备。并且模板引擎作为独立的库，API 的封装和扩展性都比 ES6 模板中只能插入表达式要好。</p>
+<h2 id="走向进阶——给模板加上标签"><a href="#走向进阶——给模板加上标签" class="headerlink" title="走向进阶——给模板加上标签"></a>走向进阶——给模板加上标签</h2><p>截至目前介绍的特性，我们可以从上面 HTML 模板字符串转义和数组迭代输出两个例子的代码发现这样一个事实：</p>
+<p><em>要用 ES6 模板实现复杂一点的字符串处理逻辑，要依赖我们写函数来实现。</em></p>
+<p>幸运的是，除了在模板的插值表达式里想办法调用各种字符串转换的函数之外，ES6 还提供了更加优雅且更容易复用的方案——带标签的模板字面量（tagged template literals，以下简称标签模板）。</p>
+<p>标签模板的语法很简单，就是在模板字符串的起始反撇号前加上一个标签。这个标签当然不是随便写的，它必须是一个可调用的函数或方法名。加了标签之后的模板，其输出值的计算过程就不再是默认的处理逻辑了，我们以下面这一行代码为例解释。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> message = l10n<span class="string">`I bought a <span class="subst">$&#123;brand&#125;</span> watch on <span class="subst">$&#123;date&#125;</span>, it cost me <span class="subst">$&#123;price&#125;</span>.`</span></span><br></pre></td></tr></table></figure>
+<p>在这个例子里，<code>l10n</code> 就是标签名，反撇号之间的内容是模板内容，这一行语句将模板表达式的值赋给 <code>message</code>，具体的处理过程为：</p>
+<ol>
+<li><p>JS 引擎会先把模板内容用占位符分割，把分割得到的字符串存在数组 <code>strings</code> 中（以下代码仅用来演示原理）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> strings = <span class="string">"I bought a $&#123;brand&#125; watch on $&#123;date&#125;, it cost me $&#123;price&#125;"</span>.split(<span class="regexp">/\$\&#123;[^&#125;]+\&#125;/</span>)</span><br><span class="line"><span class="comment">// ["I bought a ", " watch on ", ", it cost me ", "."]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后再将模板内容里的占位符<strong>表达式</strong>取出来，依次存在另一个数组 <code>rest</code> 中</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> rest = [brand, date, price]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行 <code>i18n(strings, ...rest)</code> 函数，即调用 <code>l10n</code>，并传入两部分参数，第一部分是 <code>strings</code> 作为第一个参数，第二部分是将 <code>rest</code> 展开作为余下参数。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> message = l10n(strings, ...rest)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>因此，如果将以上单步分解合并在一起，就是这样的等价形式：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> message = l10n([<span class="string">"I bought a "</span>, <span class="string">" watch on "</span>, <span class="string">", it cost me "</span>, <span class="string">"."</span>], brand, date, price)</span><br></pre></td></tr></table></figure>
+<p>也就是说当我们给模板前面加上 <code>l10n</code> 这个标签时，实际上是在调用 <code>l10n</code> 函数，并以上面这种方式传入调用参数。 <code>l10n</code> 函数可以交给我们自定义，从而让上面这一行代码👆输出我们想要的字符串。例如我们如果想让其中的日期和价格用本地字符串显示，就可以这样实现：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> l10n = <span class="function">(<span class="params">strings, ...rest</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> strings.reduce(<span class="function">(<span class="params">total, current, idx</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> arg = rest[idx]</span><br><span class="line">        <span class="keyword">let</span> insertValue = <span class="string">''</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> arg === <span class="string">'number'</span>) &#123;</span><br><span class="line">            insertValue = <span class="string">`¥<span class="subst">$&#123;arg&#125;</span>`</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arg <span class="keyword">instanceof</span> <span class="built_in">Date</span>) &#123;</span><br><span class="line">            insertValue = arg.toLocaleDateString(<span class="string">'zh-CN'</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arg !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            insertValue = arg</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> total + current + insertValue</span><br><span class="line">    &#125;, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> brand = <span class="string">'G-Shock'</span></span><br><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="keyword">const</span> price = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">l10n<span class="string">`I bought a <span class="subst">$&#123;brand&#125;</span> watch on <span class="subst">$&#123;date&#125;</span>, it cost me <span class="subst">$&#123;price&#125;</span>.`</span></span><br><span class="line"><span class="comment">// I bought a G-Shock watch on 2018/5/16, it cost me ¥1000.</span></span><br></pre></td></tr></table></figure>
+<p>这里的 <code>l10n</code> 就是个简陋的傻瓜式的本地化模板标签，它支持把模板内容里的数字当成金额加上人民币符号，把日期转换为 <code>zh-CN</code> 地区格式的 <code>2018/5/16</code> 字符串。</p>
+<p>乍一看没什么大不了的，但设想一下相同的效果用没有标签的模板要怎样实现呢？我们需要在模板之内的日期表达式和价格数字表达式上调用相应的转换函数，即 <code>${date.toLocaleDateString(&#39;zh-CN&#39;)}</code> 和 <code>${ &#39;¥&#39; + price}</code> 。一次调用差别不大，两次、三次调用的情况下，带标签的模板明显胜出。不仅符合 DRY（Don’t Repeat Yourself）原则，也可以让模板代码更加简洁易读。</p>
+<h2 id="超越模板字符串"><a href="#超越模板字符串" class="headerlink" title="超越模板字符串"></a>超越模板字符串</h2><p>带标签的模板字面量建立在非常简单的原理上——通过自己的函数，自定义模板的输出值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">tag<span class="string">`template literals`</span></span><br></pre></td></tr></table></figure>
+<p>而 ES6 规范没有对这里可以使用的 <code>tag</code> 函数做任何限制，意味着 <strong>任何函数</strong> 都可以作为标签加到模板前面，也就意味着这个函数：</p>
+<ul>
+<li>可以是立即返回的同步函数，也可以是异步的 <code>async</code> 函数（支持函数内 <code>await</code> 异步语句并返回 Promise）</li>
+<li>可以是返回字符串的函数，也可以是返回数字、数组、对象等任何值的函数</li>
+<li>可以是纯函数，也可以是有副作用的非纯函数</li>
+</ul>
+<p>所以只要你愿意，A：你可以把 <strong>任意 JavaScript 语句</strong> 放到标签函数里面去；B：你可以让标签函数返回 <strong>任意值</strong> 作为模板输出。有了如此强大的扩展能力，也难怪一开始 ES6 标准中对模板规范的命名是 <em>Template Strings</em>，后来正式命名却改成了 <em>Template Literals</em>，因为它的能力已经超越了模板字符串，去追求诗和远方了。</p>
+<p>当然在实际的使用中还是应该保持理智，不能手里拿着锤子看什么都像钉子。而以下这 5 种应用场景，倒是可以算是真正的钉子。</p>
+<h3 id="用例-1：使用-String-raw-保留原始字符串"><a href="#用例-1：使用-String-raw-保留原始字符串" class="headerlink" title="用例 1：使用 String.raw 保留原始字符串"></a>用例 1：使用 <code>String.raw</code> 保留原始字符串</h3><p><code>String.raw</code> 是 ES2015 规范新增的 <code>String</code> 对象的静态成员方法，但通常并不作为函数直接调用，而是作为语言标准自带的模板字面量标签使用，用来保留模板内容的原始值。</p>
+<p>其作用与 Python 语言中，字符串表达式的引号前加 <code>r</code> 前缀效果类似。JavaScript 需要这样的特性，只是刚好用 <code>String.raw</code> 实现了它。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">String</span>.raw<span class="string">`\n\n`</span></span><br><span class="line"><span class="keyword">var</span> b === <span class="string">'\n\n'</span></span><br><span class="line"><span class="comment">// a === b -&gt; false</span></span><br><span class="line"><span class="comment">// a.length === 4 -&gt; true</span></span><br><span class="line"><span class="comment">// b.length === 2 -&gt; true</span></span><br></pre></td></tr></table></figure>
+<p><code>String.raw</code> 标签在某些场景下可以帮我们节省很多繁琐的工作。其中一个典型的场景就是，实际开发中我们常遇到在不同编程语言之间通过 JSON 文本传输协议数据的情况，如果遇到包含转义字符和 <code>&quot;</code> （JSON 属性需用引号）的文本内容，很容易因细节处理不当导致 JSON 解析出错。</p>
+<p>而我本人遇到过这样一个真实案例，就是由 Android 终端向 JavaScript 传输 JSON 数据时，有一条数据中用户的昵称包含了 <code>&quot;</code> 字符。JavaScript 收到的 JSON 字符串文本为：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">"nickname"</span>:<span class="string">"枪锅&amp;[&#123;锅&#125;]\"锅\":锅"</span>,<span class="string">"foo"</span>:<span class="string">"bar"</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>但这里如果直接将内容用引号赋值给 <code>JSON.parse(&#39;{&quot;nickname&quot;:&quot;枪锅&amp;[{锅}]\&quot;锅\&quot;:锅&quot;,&quot;foo&quot;:&quot;bar&quot;}&#39;)</code> 就会遇到 <code>SyntaxError: Unexpected token 锅 in JSON at position 22</code> 的错误，因为单引号中的 <code>\</code> 被作为转义字符，未保留在 <code>input</code> 的值中。要得到正确的 JSON 对象，使用 String.raw 处理即可：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse(<span class="built_in">String</span>.raw<span class="string">`&#123;"nickname":"枪锅&amp;[&#123;锅&#125;]\"锅\":锅","foo":"bar"&#125;`</span>)</span><br><span class="line"><span class="comment">// &#123; nickname: '枪锅&amp;[&#123;锅&#125;]"锅":锅', foo: 'bar' &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="用例-2：从标签模板到-HTML-字符串"><a href="#用例-2：从标签模板到-HTML-字符串" class="headerlink" title="用例 2：从标签模板到 HTML 字符串"></a>用例 2：从标签模板到 HTML 字符串</h3><p>前面讲到 ES6 模板与模板引擎的对比时，提到模板引擎通过手动 escapeHTML 模板转义不安全的字符的问题。现在我们了解了标签模板之后，可以将外部定义的 escapeHTML 逻辑直接放到标签函数中，这样就不需要在模板中每一个插入表达式前，都调用 escapeHTML 函数了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> safeHTML = <span class="function">(<span class="params">strings, ...rest</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> entityMap = &#123;</span><br><span class="line">        <span class="string">'&amp;'</span>: <span class="string">'&amp;amp;'</span>,</span><br><span class="line">        <span class="string">'&lt;'</span>: <span class="string">'&amp;lt;'</span>,</span><br><span class="line">        <span class="string">'&gt;'</span>: <span class="string">'&amp;gt;'</span>,</span><br><span class="line">        <span class="string">'"'</span>: <span class="string">'&amp;quot;'</span>,</span><br><span class="line">        <span class="string">"'"</span>: <span class="string">'&amp;#39;'</span>,</span><br><span class="line">        <span class="string">'/'</span>: <span class="string">'&amp;#x2F;'</span>,</span><br><span class="line">        <span class="string">'`'</span>: <span class="string">'&amp;#x60;'</span>,</span><br><span class="line">        <span class="string">'='</span>: <span class="string">'&amp;#x3D;'</span></span><br><span class="line">true&#125;</span><br><span class="line">    <span class="keyword">const</span> escapeHTML = <span class="function"><span class="params">string</span> =&gt;</span> <span class="built_in">String</span>(string).replace(<span class="regexp">/[&amp;&lt;&gt;"'`=\/]/g</span>, (s) =&gt; entityMap[s]);</span><br><span class="line">    <span class="keyword">return</span> strings.reduce(<span class="function">(<span class="params">total, current, idx</span>) =&gt;</span> &#123;</span><br><span class="line">true    <span class="keyword">const</span> value = rest[idx] || <span class="string">''</span></span><br><span class="line">truetrue<span class="keyword">return</span> total + current + escapeHTML(value)</span><br><span class="line">    &#125;, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> evilText = <span class="string">'&lt;script&gt;alert(document.cookie)&lt;/script&gt;'</span></span><br><span class="line">safeHTML<span class="string">`<span class="subst">$&#123;evilText&#125;</span>`</span></span><br><span class="line"><span class="comment">// "&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;&amp;#x2F;script&amp;gt;"</span></span><br></pre></td></tr></table></figure>
+<p>我们这里实现的 safeHTML 作为 demo 用，并不保证生产环境完备。</p>
+<p>你一定想到了，像 HTML 模板这样的常用模板标签一定有现成的 npm 库了。没错， <code>common-tags</code> 库就是我们想要的这个库了。<code>common-tags</code> 是一个小而精的模板标签库，被包括 Angular, Slack, Ember 等在内的很多大型项目所依赖。它包含了十几个常用的用于字符串模板处理的函数，例如 <code>html</code>, <code>safeHTml</code> 等，让我们可以偷懒少造一些轮子。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> safeHtml = <span class="built_in">require</span>(<span class="string">'common-tags/lib/safeHtml'</span>)</span><br><span class="line"><span class="keyword">const</span> evilText = <span class="string">'&lt;script&gt;alert(document.cookie)&lt;/script&gt;'</span></span><br><span class="line">safeHtml<span class="string">`&lt;div&gt;<span class="subst">$&#123;evilText&#125;</span>&lt;/div&gt;`</span></span><br></pre></td></tr></table></figure>
+<p><code>common-tags</code> 也提供了扩展 API，生成可以让我们更轻松地实现自定义的标签。</p>
+<h3 id="用例-3：从模板标签到-DOM-元素"><a href="#用例-3：从模板标签到-DOM-元素" class="headerlink" title="用例 3：从模板标签到 DOM 元素"></a>用例 3：从模板标签到 DOM 元素</h3><p><code>common-tags</code> 库里包含的 <code>html</code> 和 <code>safeHtm</code> 模板标签，依然是返回字符串的函数。这意味着如果我们将它用在浏览器端得到了模板值 <code>output</code> 字符串，依然要进一步使用 <code>element.innerHTML = output</code> 才可以将模板内容渲染到 DOM 元素，显示到界面。</p>
+<p>不过既然模板字面量的标签函数可以返回任意值，我们不妨直接再进一步将 <code>element.innerHTML = output</code> 语句也放到标签函数中，并将 element 作为返回值。这样一来我们就可以直接用模板字面量的值作为真实的 DOM Element ，并且直接用 DOM API 操作其返回值了。</p>
+<p>不出意外，这个想法当然也有人已想到了，<code>@choojs/nanohtml</code> 就是做这件事的。<code>choojs</code> 是一个还很年轻的前端框架（又来），不过我们今天不讨论它，只看它所包含的 <code>nanohtml</code> 。nanohtml 的基本思路可以用这样的 Hello World 来演示：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nanohtml = <span class="built_in">require</span>(<span class="string">'nanohtml'</span>)</span><br><span class="line"><span class="keyword">var</span> element = nanohtml<span class="string">`&lt;div&gt;Hello World!&lt;/div&gt;`</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(element)</span><br></pre></td></tr></table></figure>
+<p>除了像代码所示返回 DOM Element，nanohtml 也支持在模板中的插值表达式中插入任意的标准 DOM Element，插入的元素会根据模板 markup 渲染，作为返回值 element 的子元素。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nanohtml = <span class="built_in">require</span>(<span class="string">'nanohtml'</span>)</span><br><span class="line"><span class="keyword">var</span> h3 = <span class="built_in">document</span>.createElement(<span class="string">'h3'</span>)</span><br><span class="line">h3.textContent = <span class="string">'Hello World'</span></span><br><span class="line"><span class="keyword">var</span> element = nanohtml<span class="string">`&lt;div&gt;<span class="subst">$&#123;h3&#125;</span>&lt;/div&gt;`</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(element)</span><br></pre></td></tr></table></figure>
+<h3 id="用例-4：异步操作"><a href="#用例-4：异步操作" class="headerlink" title="用例 4：异步操作"></a>用例 4：异步操作</h3><p>结合 ES2017 的 <code>async</code> <code>await</code> 特性，我们还可以定义一个 async 类型的标签函数，并在函数中调用异步操作以达到。</p>
+<p>例如上面实现的傻瓜式 <code>l10n</code> 标签，我们可以让它更傻瓜一些，把模板最后拼接出的英文句子，翻译为本地语言之后再输出。而翻译的过程，就可以通过异步调用第三方的翻译 API 例如 Google Translate API 等来实现。于是我们就有这样的伪代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> l10n = <span class="keyword">async</span> (strings, ...rest) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> strings.reduce(<span class="function">(<span class="params">total, current, idx</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> arg = rest[idx]</span><br><span class="line">        <span class="keyword">let</span> insertValue = <span class="string">''</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> arg === <span class="string">'number'</span>) &#123;</span><br><span class="line">            insertValue = <span class="string">`¥<span class="subst">$&#123;arg&#125;</span>`</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arg <span class="keyword">instanceof</span> <span class="built_in">Date</span>) &#123;</span><br><span class="line">            insertValue = arg.toLocaleDateString(<span class="string">'zh-CN'</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arg !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            insertValue = arg</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> line = total + current + insertValue</span><br><span class="line">        <span class="keyword">const</span> language = navigator.language <span class="comment">// "zh-CN"</span></span><br><span class="line">        <span class="comment">// 假装 TRANSLATE_SERVICE 是一个可用的翻译服务</span></span><br><span class="line">        <span class="keyword">const</span> translated = <span class="keyword">await</span> TRANSLATE_SERVICE.translate(line, &#123; language &#125;)</span><br><span class="line">        <span class="keyword">return</span> translated</span><br><span class="line">    &#125;, <span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">l10n<span class="string">`I bought a <span class="subst">$&#123;<span class="string">'G-Shock'</span>&#125;</span> watch on <span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>()&#125;</span>, it cost me <span class="subst">$&#123;<span class="number">1000</span>&#125;</span>`</span>.then(<span class="built_in">console</span>.log)</span><br><span class="line"><span class="comment">// "我在 2018/5/16 买了一个 G-Shock 手表，花了我 1000 元"</span></span><br></pre></td></tr></table></figure>
+<p>当然在不支持 async、await 也不支持 generator 生成器的环境下，使用 Promise 封装异步调用，使标签函数返回 Promise 实例，也可以实现异步操作。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> tag = <span class="function">(<span class="params">strings, ...rest</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(resolve, <span class="number">1000</span>, <span class="string">'Hello World'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tag<span class="string">`Anything`</span>.then(<span class="built_in">console</span>.log)</span><br><span class="line"><span class="comment">// 1s 后 console 将输出：</span></span><br><span class="line"><span class="comment">// "Hello World"</span></span><br></pre></td></tr></table></figure>
+<h3 id="用例-5：DSL"><a href="#用例-5：DSL" class="headerlink" title="用例 5：DSL"></a>用例 5：DSL</h3><p>DSL（领域专用语言）是一个挺唬人的概念，顾名思义所谓 DSL 是指未解决某一特定领域的问题推出的语言。DSL 有按某种条件约束的规则——语法，故称得上是语言。通常 DSL 用于编程领域，通过计算机程序处理 DSL，有些功能强大的 DSL 语言也会被认为是 mini 编程语言。</p>
+<p>典型的 DSL 有：</p>
+<ul>
+<li>正则表达式</li>
+<li>数据库查询语言（SQL）</li>
+<li>CSS Selector 的规则也是一种 DSL</li>
+<li>文本处理的瑞士军刀 awk，sed 因为其复杂的使用规则也被认为是 DSL</li>
+</ul>
+<p>合理使用 ES6 标签模板，可以让 JavaScript 对内嵌 DSL 的处理更加简洁。严格来说，我们上面用例 2 和用例 3 对中的 <code>html</code> 类模板标签，就算是 DSL 的范畴了。下面是一些典型的案例：</p>
+<blockquote>
+<p>注意：以下模板标签仅作描述，需要自行实现</p>
+</blockquote>
+<h4 id="案例-1：DOM-选择器"><a href="#案例-1：DOM-选择器" class="headerlink" title="案例 1：DOM 选择器"></a>案例 1：DOM 选择器</h4><p>例如我们可以用标签实现一个 DOM 选择器，形如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> elements = query<span class="string">`.<span class="subst">$&#123;className&#125;</span>`</span> <span class="comment">// the new way</span></span><br></pre></td></tr></table></figure>
+<p>虽然第一眼看上去只是另一个 jQuery 选择器，但这种调用方式天然支持我们在模板之中嵌入任意的插值表达式，在 API 的 expressive 这个特性上有提升。而且 query 函数由我们自由实现，意味着可以自由地在 query 函数中加入 selector 值规范化校验，返回值规范化等额外功能。</p>
+<h4 id="案例-2：Shell-脚本"><a href="#案例-2：Shell-脚本" class="headerlink" title="案例 2：Shell 脚本"></a>案例 2：Shell 脚本</h4><p>在 Node.js 环境下，我们还可以实现一个 <code>sh</code> 标签用于描述 shell 脚本的调用：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> proc = sh<span class="string">`ps aux | grep <span class="subst">$&#123;pid&#125;</span>`</span></span><br></pre></td></tr></table></figure>
+<p>看到这行语句我们下意识地会想到，这里的 API 会调用 shell 执行模板拼接出来的命令，而 proc 应该是该命令执行的结果或输出。</p>
+<h4 id="案例-3：正则表达式构造器"><a href="#案例-3：正则表达式构造器" class="headerlink" title="案例 3：正则表达式构造器"></a>案例 3：正则表达式构造器</h4><p>以 <code>re</code> 标签实现一个动态的正则表达式构造器，这种运行时生成的正则表达式，通常要自己定义函数，并调用 new RegExp 实现。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> match = input.match(re<span class="string">`\d+<span class="subst">$&#123;separator&#125;</span>\d+`</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="案例-4：国际化与本地化"><a href="#案例-4：国际化与本地化" class="headerlink" title="案例 4：国际化与本地化"></a>案例 4：国际化与本地化</h4><p>可以实现这样一个 <code>i18n</code> 和 <code>l10n</code> 模板标签：约定在模板字符串中的插值表达式 <code>${expression}</code> 后，以 <code>:type</code> 格式指定 expression 表达式期望的文本显示格式，实现自定义的模板输出功能。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> message = l10n<span class="string">`Hello <span class="subst">$&#123;name&#125;</span>; you are visitor number <span class="subst">$&#123;visitor&#125;</span>:n!</span></span><br><span class="line"><span class="string">You have <span class="subst">$&#123;money&#125;</span>:c in your account!`</span>;</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>l10n</code> 标签与我们在上文 hard-code 的版本相比，增加了 <code>:type</code> 标识符以表示类别，例如 <code>:n</code> 表示数字，<code>:c</code> 表示货币。这些类型标识符的规则可以在 <code>l10n</code> 的实现代码中约定。而这个<strong>约定</strong>的意味就有点自行定义 DSL 的味道了。</p>
+<p>以上 4 个 case 的共同点是，我们首先约定了有相似模式的 API 接口，它们都表现为带标签的模板的形式——一个模板名后跟模板内容。</p>
+<p>虽然我们作为实现者知道，实际上在调用标签模板时，本质上是将模板内容重组为 <code>(strings, ...rest)</code> 形式再传给标签函数调用的。但这样的 API 调用看上去却很像是只有一个函数和一个参数，让人一眼看到就能猜出来 API 的用途。</p>
+<p>好的 API 应当有良好的<strong>自我描述性</strong>，将复杂的实现细节封装起来，并且尽量<strong>专注做好一件事</strong>。从这个角度来说带标签的 ES6 模板非常适合处理 JS 内嵌的 DSL，甚至可以帮助我们在特定的业务逻辑中实现一个 mini DSL。</p>
+<h2 id="更多探索"><a href="#更多探索" class="headerlink" title="更多探索"></a>更多探索</h2><p>以上就是对 ES6 模板语法和实用价值的介绍。讲到实践，得益于其原理的简洁，我们可以立即享受到它带来的好处。在 Node.js 环境下，毫无疑问我们可以立即使用不用迟疑；在浏览器环境下，使用我们的老朋友 Babel 就可以将其转换为兼容的 ES5 代码。</p>
+<p>总结起来，ES6 模板中最激动人心的特性还是标签，小小的标签用简单的原理提供了异常丰富的扩展能力，颇有点四两拨千金的感觉。基于它，JavaScript 社区已经产生了很多新的想法并产生了很多实实在在的工具库。</p>
+<p>除了我们在前面示例中有简单提到 <code>common-tags</code> 和 <code>nano-html</code> 两个库，也有很多实现了特定领域功能的标签库，例如 SQL 相关的、国际化和本地化相关的，用 tagged template literals 这几个关键词在 npm 搜索就可以找到别人造的轮子。</p>
+<p>社区关注量最大的探索还是集中在将模板字面量与 HTML 模板的结合上，有 3 个代表性的框架致力于采用 template literals 的方案并结合其他 good stuff 实现可以媲美 Virtual DOM 的快速渲染方案。</p>
+<ul>
+<li><a href="https://github.com/WebReflection/hyperHTML" target="_blank" rel="noopener">hyperHTML</a> 旨在成为 Virtual DOM 替代品的仓库，在官方文档中明确直出，其核心理念就是采用 ES6 模板 作为 Virtual DOM Alternative</li>
+<li><a href="https://github.com/Polymer/lit-html" target="_blank" rel="noopener">lit-html</a> Google Polymer 团队推出的库，理念与 hyperHTML 类似，结合了 ES6 模板和 HTML <code>&lt;template&gt;</code> 元素的优点，实现 DOM 元素的快速渲染和更新</li>
+<li><a href="https://github.com/choojs/choo" target="_blank" rel="noopener">choojs</a> 一个 minify+gzip 后只有 4KB 的现代前端开发框架，与 hyperHTML 和 lit-html 不同，是一个更加全功能的框架，目前（2018 年 5 月）Star 数比前两者都多</li>
+</ul>
+<p>这 3 个框架的共同点是都采用了 tagged template literals，并且放弃使用 Virtual DOM 这种现在非常火爆的概念，但号称一样能实现快速渲染和更新真实 DOM。从各自提供的数据上看，也的确都有着不俗的表现。碍于篇幅在这里我们就不再展开讨论了。</p>
+<p>这些框架的也反映出 ES6 模板的确潜力很大，更深入的就留给我们未来探索，以下这些文章都是不错的参考。</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="noopener">模板字符串 - MDN 文档</a></li>
+<li><a href="https://gist.github.com/dherman/6165867" target="_blank" rel="noopener">What can you do with ES6 string template literals? - dherman/template-literals.md</a></li>
+<li><a href="http://2ality.com/2011/09/quasi-literals.html" target="_blank" rel="noopener">Template strings: embedded DSLs in ECMAScript 6</a></li>
+<li><a href="https://www.keithcirkel.co.uk/es6-template-literals/" target="_blank" rel="noopener">ES6 Template Literals, the Handlebars killer?</a></li>
+<li><a href="https://www.youtube.com/watch?v=Io6JjgckHbg" target="_blank" rel="noopener">lit-HTML 在 Chrome Dev Summit 2017 上的演示</a></li>
+<li><a href="https://www.youtube.com/watch?v=Io6JjgckHbg" target="_blank" rel="noopener">Efficient, Expressivelit-HTML 在 Polymer Summit 2017 上的演示</a></li>
+<li><a href="https://gist.github.com/WebReflection/fadcc419f5ccaae92bc167d8ff5c611b" target="_blank" rel="noopener">hyperHTML 与 lit-html 对比</a></li>
+<li><a href="https://www.zeolearn.com/magazine/hyperhtml-vs-vdom" target="_blank" rel="noopener">hyperHTML 与 Virtual DOM 对比</a></li>
+<li><a href="https://medium.com/choojs/choo-architecture-performance-f6f0c44e8a6a" target="_blank" rel="noopener">Choo 框架架构与性能介绍</a></li>
+</ul>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/07/06/es6-modules-support-is-coming-to-browsers-what-does-it-mean-for-frontend-dev/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/03/24/you-dont-know-npm/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="rianma's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        mmg9403@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mmg9403@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/myan17" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/myan17" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>rianma
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
+
+
+
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

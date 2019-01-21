@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+            浏览器已原生支持 ES 模块，这对前端开发来说意味着什么？ | 
+        
+        rianma
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="rianma">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="rianma">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://myan.im">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="浏览器已原生支持 ES 模块，这对前端开发来说意味着什么？ | rianma">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    
+
+    
+        <meta property="article:published_time" content="7月 06, 2018">
+        <meta property="article:modified_time" content="1月 18, 2019">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="浏览器已原生支持 ES 模块，这对前端开发来说意味着什么？ | rianma">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="http://myan.im">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://myan.im/2018/07/06/es6-modules-support-is-coming-to-browsers-what-does-it-mean-for-frontend-dev/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rianma",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "rianma",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "headline": "浏览器已原生支持 ES 模块，这对前端开发来说意味着什么？",
+    "url": "http://myan.im/2018/07/06/es6-modules-support-is-coming-to-browsers-what-does-it-mean-for-frontend-dev/index.html",
+    "datePublished": "7月 06, 2018",
+    "dateModified": "1月 18, 2019",
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://myan.im"
+    }
+}
+</script>
+
+
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    .footer-sns-facebook {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNjU3LjYgODcuOGw0LjggMy44djU1LjJjMCA1NC42IDAgNTUuMi00LjYgNTkuNi00LjQgNC40LTYgNC42LTUwLjIgNS42bC00NS42IDEtNy4yIDUuNmMtMTAuNCA4LTE2LjggMTcuMi0xOS4yIDI3LjQtMSA1LTEuOCAyNC44LTEuOCA0NCAuMiAzOCAxLjYgNDQuNiAxMC44IDQ4IDIuOCAxLjIgMjguNCAyIDU2LjggMiA0Ny44IDAgNTIgLjIgNTYuMiAzLjhsNC44IDMuOHY1NS4yYzAgNTQuNiAwIDU1LjItNC42IDU5LjYtNC40IDQuNi01LjQgNC42LTU3IDUuMi0yOC44LjItNTQuNC44LTU2LjggMS40LTIuNC42LTUuNiAzLTYuOCA1LjQtMS44IDMuMi0yLjQgNDEuNC0yLjYgMTQzLjJsLS4yIDEzOC44LTUuNiA0LjgtNS42IDQuOEg2MDljLTUyLjQgMC01Mi44IDAtNTguMi00LjZsLTUuNC00LjYtLjItMTQwLjYtLjItMTQwLjYtNC44LTMuOGMtNC4yLTMuNC04LTMuOC0zNS42LTMuOC0zMi44IDAtNDEtMS44LTQzLjYtMTAtLjYtMi4yLTEuMi0yNS40LTEuMi01MS40IDAtNjAuOC0uMi01NyAzLjQtNjEuNiAyLjgtMy42IDYtNCAzNy44LTUgMzMtMSAzNS4yLTEuMiAzOS40LTUuNiA0LjYtNC40IDQuNi01LjIgNS44LTcxIDEuMi03My40LjItNjcuMiAxNi42LTk5LjQgOC0xNS44IDEyLjgtMjIgMjgtMzcgMTUuMi0xNS4yIDIxLjQtMTkuNiAzOC4yLTI4IDExLTUuNCAyNC0xMSAyOS0xMi4yIDYuMi0xLjggMjguNi0yLjYgNzEuMi0yLjYgNTguNi0uMiA2Mi42IDAgNjcgMy42eiIvPjwvc3ZnPg==);
+    }
+    
+    
+    .footer-sns-twitter {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNTMyLjggMjA1YzEwIDQgMjMgMTAuOCAyOC44IDE1LjIgMTIuNiA5LjIgMTYuNiAxMC42IDI5LjQgOS40IDYuNi0uNiAxMy0zLjIgMjAuNC04LjIgMTEuMi03LjYgMTkuNC05LjIgMjMuNi01IDMuNiAzLjYgMi44IDktMi44IDE4LjYtNy4yIDEyLjQtNiAxOC44IDQuMiAyNC4yIDQuNCAyLjIgOC4yIDUuNiA4LjYgNy40IDEgNC44LTEyLjYgMjQuMi0yMiAzMS44LTExLjggOS4yLTE3LjIgMjIuNi0xOS42IDQ3LjgtNC44IDUwLjQtNy44IDY2LjYtMTYuNCA4NS40LTMgNy03IDE3LjgtOC44IDI0LTEuOCA2LjQtNSAxNC42LTcuNCAxOC40LTIuMiAzLjgtNy40IDEzLTExLjQgMjAuNC0xNy4yIDMwLjgtNDMuNCA2MS40LTcxLjQgODMuOC0yNS42IDIwLjQtNDYgMzMuMi02NC4yIDQwLjItOC40IDMuMi0xOCA3LjYtMjEuNCA5LjYtNy40IDQuNi0yMi40IDguNi01Ny4yIDE1LTYyLjIgMTEuNi03OS4yIDExLjQtMTM1LjYtMS0zMi40LTctMzguNi05LTUyLTE2LjgtMjEuNC0xMi42LTI0LjItMTQuOC0yNC4yLTE5LjQgMC02LjIgMTAuMi05LjIgMzUtMTAuNCAyMi40LTEgMjguNi0yLjYgNTctMTQuMiAyMy44LTkuOCAyOS40LTEyLjggMzAuNC0xNi44IDIuMi04LjItMy0xMy4yLTI2LjgtMjUuNC0yNS44LTEzLjItMzIuMi0xOC40LTQzLjgtMzUuOC05LTEzLjYtMTAtMjEuMi0zLjYtMzMuNiA1LjQtMTAuOCAzLjYtMTUtMTEuOC0yNS40LTktNi0xNC0xMS42LTIwLjgtMjIuNi0yMy40LTM3LjgtMjUtNTAuOC03LjItNTkuOCA0LjgtMi40IDkuNC01LjQgMTAuMi02LjYgMi44LTQuMi0uNC0xNS42LTguNC0yOS0xMS42LTE5LjYtMTMuMi0yNS44LTEzLjItNTUuMiAwLTI4LjggMi42LTM3LjggMTItNDAuMiA5LTIuMiAxNC44IDEgMzUuNiAyMC4yIDI0LjggMjIuOCA0My42IDM2LjYgNjIuOCA0NS44IDggMy44IDE3LjggOS4yIDIyIDEyIDQuMiAyLjggMTQuOCA3IDIzLjQgOS4yIDguNiAyLjIgMjQuMiA2LjggMzQuOCAxMC4yIDEzLjQgNC40IDIzLjYgNi40IDMzIDYuNiAxMi44LjIgMTQuMi0uMiAxOC42LTUuNCA0LTQuOCA0LjgtNy44IDQuOC0xOS4yIDAtMTQuNCA1LjYtMzkuNiAxMS4yLTUwLjYgNC4yLTguNCAyOS4yLTM0LjIgMzkuOC00MS40IDcuOC01LjQgMzUuNi0xNiA1Mi0yMCAxNC4yLTMuNiAzMi42LTEuMiA1Mi40IDYuOHoiLz48L3N2Zz4=);
+    }
+    
+    
+    .footer-sns-gplus {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHpNNDMwIDI5NS40YzQwLjYgMTUuNCA1Ni42IDIzLjggNzIuNiAzOC40IDYuOCA2LjIgNy4yIDE1LjIgMSAyMy40LTYuMiA4LTMzLjYgMzMuOC0zOSAzNi42LTUuNiAyLjgtMTcuNiAyLjgtMjMuMi0uMi0yLjQtMS4yLTguMi01LjItMTMtOC44LTExLjItOC42LTI0LjYtMTEuMi01NS4yLTExLjItMjcuNCAwLTQwLjYgMi42LTUyLjIgMTAuNC00LjQgMi44LTEyLjIgNy42LTE3LjIgMTAuNi0yMyAxMy4yLTUxLjQgNTUtNTUuOCA4Mi40LTIuNiAxNS42LTIuNCAzNC44LjIgNTEgMi44IDE3LjQgMTkuOCA0OC44IDM1LjIgNjUuMiAxNiAxNi42IDQ1IDMzLjYgNjIuOCAzNi42IDI2LjggNC40IDY1LjggMS42IDc5LjQtNS44IDIwLjYtMTEuNCAzMS0xOSA0MS0zMC40IDE4LjgtMjEuNiAyMy40LTM0LjIgMTUuNi00My44LTMuOC00LjgtNC40LTQuOC01MS01LjgtNjAuOC0xLjItNTYuMiAyLjItNTYuMi00My4yIDAtMzIuNC4yLTMzLjIgNC44LTM3IDQuNC0zLjYgOS0zLjggOTItMy44IDc5IDAgODcuOC40IDk0LjIgMy42IDExLjIgNS42IDEzIDExLjQgMTIuOCA0My40IDAgMjUuNC0uOCAzMC44LTcuNiA1OC00IDE2LjYtOS44IDM0LTEyLjYgMzktMi44IDUtOC4yIDE0LjItMTEuNiAyMC42LTguNCAxNS40LTI3LjIgMzYuOC00MC44IDQ2LjYtNS44IDQuNC0xMy44IDEwLjItMTcuNiAxMy4yLTMuOCAzLTExIDctMTYuMiA4LjgtNS4yIDEuOC0xNi4yIDYuNC0yNC40IDEwLTIyLjQgOS42LTM0LjggMTEuNi03MyAxMS42LTM3LjYuMi00Ny0xLjQtNzEtMTItOC4yLTMuNi0xNy42LTcuMi0yMC44LTgtMTUuOC0zLjgtNjctNDUuMi03Ny44LTYyLjgtMi4yLTMuOC03LjYtMTEuNi0xMS44LTE3LjItNC4yLTUuNC05LTE0LTEwLjYtMTktMS44LTQuOC02LjItMTYtMTAtMjQuOC0zLjYtOC44LTcuOC0yMi4yLTkuMi0yOS42LTMuMi0xOC44LTEuNC03OS40IDIuOC05MS40IDEzLjgtNDAuNiAzNS42LTc4IDU4LjgtMTAwLjIgMTQtMTMuNiA0Ny4yLTM2LjQgNTgtMzkuOCA0LjItMS40IDEzLjQtNS4yIDIwLjYtOC40IDIyLTEwIDMyLjgtMTEuNiA3Ni0xMSAzMy44LjYgNDAuNCAxLjIgNTAgNC44em0zNDAuOCA4MC44YzggMy42IDkuNiAxMS4yIDkuMiAzOS4yLS42IDM0LjQtLjYgMzQgNSAzOS42IDQuOCA1IDUuNCA1IDM3LjYgNSA0My40IDAgNDQuNC44IDQzLjIgMzYuMi0uOCAxNy0xLjIgMTguNC02LjQgMjMtNS40IDQuNi02LjYgNC44LTM3LjYgNC44LTMxLjIgMC0zMiAuMi0zNi44IDUtNS42IDUuNC01LjYgNC40LTUgNDEuMi40IDI2LjQuMiAyNy40LTQuNiAzMy00LjggNS42LTYgNS44LTI0LjQgNi40LTIwLjguOC0yOS42LTEuNC0zMy40LTguNC0xLjQtMi42LTItMTUuNi0xLjgtMzUuNi40LTMxLjIuNC0zMS42LTQuNi0zNi42cy01LjYtNS0zNi01Yy0xOC44IDAtMzMtLjgtMzYtMi4yLTcuNi0zLjYtOS42LTExLjItOC44LTMzLjguOC0yOC4yLjQtMjggNDEtMjggNDUuNCAwIDQ1LjQgMCA0NC42LTQyLjYtLjYtMzMtLjYtMzMgNS0zOC40IDQuNC00LjYgNi4yLTUgMjQuOC01IDExIDAgMjIuMiAxIDI1IDIuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+
+    <style>
+        @font-face {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 300;
+            src: url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.eot);
+            src: local('Roboto'),local('Roboto-Normal'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.eot?#iefix) format('embedded-opentype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.woff2) format('woff2'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.woff) format('woff'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.ttf) format('truetype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-300.svg#Roboto) format('svg')
+        }
+
+        @font-face {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: regular;
+            src: url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.eot);
+            src: local('Roboto'),local('Roboto-Normal'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.eot?#iefix) format('embedded-opentype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.woff2) format('woff2'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.woff) format('woff'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.ttf) format('truetype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-regular.svg#Roboto) format('svg')
+        }
+
+        @font-face {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            src: url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.eot);
+            src: local('Roboto'),local('Roboto-Normal'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.eot?#iefix) format('embedded-opentype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.woff2) format('woff2'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.woff) format('woff'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.ttf) format('truetype'),url(https://lib.baomitu.com/fonts/roboto/roboto-v15-latin-500.svg#Roboto) format('svg')
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/MaterialIcons-Regular.eot);
+            src: url(https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/MaterialIcons-Regular.woff2) format('woff2'),url(https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/MaterialIcons-Regular.woff) format('woff'),url(https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/MaterialIcons-Regular.ttf) format('truetype')
+        }
+    </style>
+
+
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Analytics -->
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116305930-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116305930-1');
+</script>
+
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#复习：defer-和-async-傻傻分不清楚？"><span class="post-toc-number">1.</span> <span class="post-toc-text">复习：defer 和 async 傻傻分不清楚？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#改变游戏规则的-lt-script-type-module-gt"><span class="post-toc-number">2.</span> <span class="post-toc-text">改变游戏规则的 &lt;script type=module&gt;</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-ES-Module-101"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">#1 ES Module 101</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#导入与导出"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">导入与导出</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#default"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">default</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#语法限制"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">语法限制</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-来认识一下-type-module-吧"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">#2 来认识一下 type=module 吧</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-type-module-模块支持内联"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">#3 type=module 模块支持内联</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-默认-defer，支持-async"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">#4 默认 defer，支持 async</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-同一模块执行一次"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">#5 同一模块执行一次</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-CORS-跨域限制"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">#6 CORS 跨域限制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-MIME-类型"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">#7 MIME 类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#真实世界里的-ES-Module-实践"><span class="post-toc-number">3.</span> <span class="post-toc-text">真实世界里的 ES Module 实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#向后兼容方案"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">向后兼容方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#带来的益处"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">带来的益处</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-简化开发工作流"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">#1 简化开发工作流</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-作为检查新特性支持度的水位线"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">#2 作为检查新特性支持度的水位线</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面临的挑战——重新思考前端构建"><span class="post-toc-number">4.</span> <span class="post-toc-text">面临的挑战——重新思考前端构建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-请求数量增加"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">#1 请求数量增加</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-警惕依赖地狱——版本与缓存管理"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">#2 警惕依赖地狱——版本与缓存管理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-必须保持向后兼容"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">#3 必须保持向后兼容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-升级-CommonJS-模块为-ES-标准模块"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">#4 升级 CommonJS 模块为 ES 标准模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-别忘了压缩-ES-模块文件"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">#5 别忘了压缩 ES 模块文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-结论？"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">#6 结论？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES-模块的未来？"><span class="post-toc-number">5.</span> <span class="post-toc-text">ES 模块的未来？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资源"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考资源</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://qzonestyle.gtimg.cn/aoi/sola/20180709152430_3ZS6ggR8Q0.png)">
+    
+            <p class="article-headline-p">
+                浏览器已原生支持 ES 模块，这对前端开发来说意味着什么？
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>rianma</strong>
+        <span>7月 06, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </li></ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=浏览器已原生支持 ES 模块，这对前端开发来说意味着什么？&url=http://myan.im/2018/07/06/es6-modules-support-is-coming-to-browsers-what-does-it-mean-for-frontend-dev/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=浏览器已原生支持 ES 模块，这对前端开发来说意味着什么？&url=http://myan.im/2018/07/06/es6-modules-support-is-coming-to-browsers-what-does-it-mean-for-frontend-dev/index.html&via=rianma" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://myan.im/2018/07/06/es6-modules-support-is-coming-to-browsers-what-does-it-mean-for-frontend-dev/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://myan.im/2018/07/06/es6-modules-support-is-coming-to-browsers-what-does-it-mean-for-frontend-dev/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>2017 年，主流浏览器陆续开始原生支持 ES2015 模块，这意味着——是时候重新学习 script 标签了。以及，我保证这绝不是又一篇只讲 ES module 语法不谈实践的“月经”文。</p>
+</blockquote>
+<p>还记得当初入门前端开发的时候写过的 Hello World 么？一开始我们先创建了一个 HTML 文件，在 <code>&lt;body&gt;</code> 标签里写上网页内容；后来需要学习页面交互逻辑时，在 HTML markup 里增加一个 <code>&lt;script src=&quot;script.js&quot;&gt;</code> 标签引入外部 script.js 代码，script.js 负责页面交互逻辑。</p>
+<p>随着前端社区 JavaScript 模块化的发展，我们现在的习惯是拆分 JS 代码模块后使用 Webpack 打包为一个 bundle.js 文件，再在 HTML 中使用 <code>&lt;script src=&quot;bundle.js&quot;&gt;</code> 标签引入打包后的 JS。这意味着我们的前端开发工作流从“石器时代”跨越到了“工业时代”，但是对浏览器来说并没有质的改变，它所加载的代码依然一个 bundle.js ，与我们在 Hello World 时加载脚本的方式没什么两样。</p>
+<p>——直到浏览器对 ES Module 标准的原生支持，改变了这种情况。目前大多数浏览器已经支持通过 <code>&lt;script type=&quot;module&quot;&gt;</code> 的方式加载标准的 ES 模块，正是时候让我们重新学习 script 相关的知识点了。</p>
+<h2 id="复习：defer-和-async-傻傻分不清楚？"><a href="#复习：defer-和-async-傻傻分不清楚？" class="headerlink" title="复习：defer 和 async 傻傻分不清楚？"></a>复习：defer 和 async 傻傻分不清楚？</h2><p>请听题：</p>
+<p><strong>Q：有两个 script 元素，一个从 CDN 加载 lodash，另一个从本地加载 script.js，假设总是本地脚本下载更快，那么以下 plain.html、async.html 和 defer.html 分别输出什么？</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// script.js</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(_.VERSION);</span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Lodash Not Available'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.body ? <span class="string">'YES'</span> : <span class="string">'NO'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// A. plain.html</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"script.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// B. async.html</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"script.js"</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// C. defer.html</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"script.js"</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果你知道答案，恭喜你可以跳过这一节了，否则就要复习一下了。</p>
+<p>首先 A. plain.html 的输出是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4.17.10</span><br><span class="line">NO</span><br></pre></td></tr></table></figure>
+<p>也就是说 script.js 在执行时，lodash 已下载并执行完毕，但 document.body 尚未加载。</p>
+<p>在 defer 和 async 属性诞生之前，最初浏览器加载脚本是采用同步模型的。浏览器解析器在自上而下解析 HTML 标签，遇到 script 标签时会暂停对文档其它标签的解析而读取 script 标签。此时：</p>
+<ul>
+<li>如果 script 标签无 src 属性，为内联脚本，解析器会直接读取标签的 textContent，由 JS 解释器执行 JS 代码</li>
+<li>如果 script 有 src 属性，则从 src 指定的 URI 发起网络请求下载脚本，然后由 JS 解释器执行</li>
+</ul>
+<p>无论哪种情况，都会阻塞浏览器的解析器，刚刚说到浏览器是自上而下解析 HTML Markup 的，所以这个阻塞的特性就决定了，script 标签中的脚本执行时，位于该 script 标签以上的 DOM 元素是可用的，位于其以下的 DOM 元素不可用。</p>
+<p>如果我们的脚本的执行需要操作前面的 DOM 元素，并且后面的 DOM 元素的加载和渲染依赖该脚本的执行结果，这样的阻塞是有意义的。但如果情况相反，那么脚本的执行只会拖慢页面的渲染。</p>
+<p>正因如此，2006 年的《Yahoo 网站优化建议》中有一个著名的规则：</p>
+<blockquote>
+<p>把脚本放在 body 底部</p>
+</blockquote>
+<p>但现代浏览器早已支持给 <code>&lt;script&gt;</code> 标签加上 defer 或 async 属性，二者的共同点是都不会阻塞 HTML 解析器。</p>
+<p>当文档只有一个 script 标签时，defer 与 async 并没有显著差异。但当有多个 script 标签时，二者表现不同：</p>
+<ul>
+<li>async 脚本每个都会在下载完成后立即执行，无关 script 标签出现的顺序</li>
+<li>defer 脚本会根据 script 标签顺序先后执行</li>
+</ul>
+<p>所以以上问题中，后两种情况分别输出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// B. async.html</span><br><span class="line">Lodash Not Available</span><br><span class="line">YES</span><br><span class="line"></span><br><span class="line">// C. defer.html</span><br><span class="line">4.17.10</span><br><span class="line">YES</span><br></pre></td></tr></table></figure>
+<p>因为 async.html 中 script.js 体积更小下载更快，所以执行时间也比从 CDN 加载的 lodash 更早，所以 <code>_.VERSION</code> 上不可用，输出 <code>Lodash Not Available</code>；而 defer.html 中的 script.js 下载完毕后并不立即执行，而是在 lodash 下载和执行之后才执行。</p>
+<p>以下这张图片可以直观地看出 Default、defer、async 三种不同 script 脚本的加载方式的差异，浅蓝色为脚本下载阶段，黄色为脚本执行阶段。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/9/1647de1539daec9b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>One more thing…</p>
+<p>上文只分析了包含 src 属性的 script 标签，也就是需要发起网络请求从外部加载脚本的情况，那么当内联 <code>&lt;script&gt;</code> 标签遇到 async 和 defer 属性时又如何呢？</p>
+<p>答案就是简单的<strong>不支持</strong>，把 async 和 defer 属性用以下这种方式写到 script 标签中没有任何效果，意味着内联的 JS 脚本一定是同步阻塞执行的。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// defer attribute is useless</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(_.VERSION)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// async attribute is useless</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(_.VERSION)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这一点之所以值得单独拎出来讲，是因为稍后我们会发现浏览器处理 ES Module 时与常规 script 相反，默认情况下是异步不阻塞的。</p>
+<h2 id="改变游戏规则的-lt-script-type-module-gt"><a href="#改变游戏规则的-lt-script-type-module-gt" class="headerlink" title="改变游戏规则的 &lt;script type=module&gt;"></a>改变游戏规则的 <code>&lt;script type=module&gt;</code></h2><p>TLDR;</p>
+<ul>
+<li>给 script 标签添加 type=module 属性，就可以让浏览器以 ES Module 的方式加载脚本</li>
+<li>type=module 标签既支持内联脚本，也支持加载脚本</li>
+<li>默认情况下 ES 脚本是 defer 的，无论内联还是外联</li>
+<li>给 script 标签显式指定 <code>async</code> 属性，可以覆盖默认的 defer 行为</li>
+<li>同一模块仅执行一次</li>
+<li>远程 script 根据 URL 作为判断唯一性的 Key</li>
+<li>安全策略更严格，非同域脚本的加载受 CORS 策略限制</li>
+<li>服务器端提供 ES Module 资源时，必须返回有效的属于 JavaScript 类型的 Content-Type 头</li>
+</ul>
+<h3 id="1-ES-Module-101"><a href="#1-ES-Module-101" class="headerlink" title="#1 ES Module 101"></a>#1 ES Module 101</h3><h4 id="导入与导出"><a href="#导入与导出" class="headerlink" title="导入与导出"></a>导入与导出</h4><p>ES 标准的模块使用 <code>import</code>、<code>export</code> 实现模块导入和导出。</p>
+<p>export 可以导出任意可用的 JavaScript 标识符（idendifier），显式的导出方式包括声明（declaration）语句和 <code>export { idendifier as name }</code> 两种方式。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// lib/math.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> pi = <span class="number">3.141593</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> epsilon = <span class="built_in">Number</span>.EPSILON;</span><br><span class="line"><span class="keyword">export</span> &#123; pi <span class="keyword">as</span> PI &#125;;</span><br></pre></td></tr></table></figure>
+<p>在另一个文件中，使用 <code>import ... from ...</code> 可以导入其他模块 export 的标识符，常用的使用方式包括：</p>
+<ul>
+<li><code>import * as math from ...</code> 导入整个模块，并通过 math 命名空间调用</li>
+<li><code>import { pi, epsilon } from ...</code> 部分导入，可直接调用 pi, epsilon 等变量</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> math <span class="keyword">from</span> <span class="string">'./lib/math.js'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; pi, PI, epsilon &#125; <span class="keyword">from</span> <span class="string">'./lib/math.js'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`2π = <span class="subst">$&#123;math.sum(math.pi, math.pi)&#125;</span>`</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`epsilon = <span class="subst">$&#123;epsilon&#125;</span>`</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`PI = <span class="subst">$&#123;PI&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><p>ES 模块支持 <code>default</code> 关键词实现无命名的导入，神奇的点在于它可以与其他显式 <code>export</code> 的变量同时导入。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// lib/math.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
+<p>对于这种模块，导入该模块有两种方式，第一种为默认导入 default 值。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> oneTwoThree <span class="keyword">from</span> <span class="string">'./lib/math.js'</span>;</span><br><span class="line"><span class="comment">// 此时 oneTwoThree 为 123</span></span><br></pre></td></tr></table></figure>
+<p>第二种为 <code>import *</code> 方式导入 default 与其他变量。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> allDeps <span class="keyword">from</span> <span class="string">'./lib/math.js'</span></span><br><span class="line"><span class="comment">// 此时 allDeps 是一个包含了 sum 和 default 的对象，allDeps.default 为 123</span></span><br><span class="line"><span class="comment">// &#123; sum: ..., default: 123&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="语法限制"><a href="#语法限制" class="headerlink" title="语法限制"></a>语法限制</h4><p>ES 模块规范要求 import 和 export 必须写在脚本文件的最顶层，这是因为它与 CommonJS 中的 module.exports 不同，export 和 import 并不是传统的 JavaScript 语句（statement）。</p>
+<ul>
+<li><p>不能像 CommonJS 一样将导出代码写在条件代码块中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ./lib/logger.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">const</span> isError = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> logFunc;</span><br><span class="line"><span class="keyword">if</span> (isError) &#123;</span><br><span class="line">    logFunc = <span class="function">(<span class="params">message</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`%c<span class="subst">$&#123;message&#125;</span>`</span>, <span class="string">'color: red'</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    logFunc = <span class="function">(<span class="params">message</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`%c<span class="subst">$&#123;message&#125;</span>`</span>, <span class="string">'color: green'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; logFunc <span class="keyword">as</span> log &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isError = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">const</span> greenLog = <span class="function">(<span class="params">message</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`%c<span class="subst">$&#123;message&#125;</span>`</span>, <span class="string">'color: green'</span>);</span><br><span class="line"><span class="keyword">const</span> redLog = <span class="function">(<span class="params">message</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`%c<span class="subst">$&#123;message&#125;</span>`</span>, <span class="string">'color: red'</span>);</span><br><span class="line"><span class="comment">// 错误！</span></span><br><span class="line"><span class="keyword">if</span> (isError) &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">const</span> log = redLog;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">const</span> log = greenLog;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不能把 import 和 export 放在 try catch 语句中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误！</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">import</span> * <span class="keyword">as</span> logger <span class="keyword">from</span> <span class="string">'./lib/logger.js'</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>另外 ES 模块规范中 import 的路径必须是有效的相对路径、或绝对路径（URI），并且不支持使用表达式作为 URI 路径。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误：不支持类 npm 的“模块名” 导入</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> <span class="string">'lodash'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误：必须为纯字符串表示，不支持表达式形式的动态导入</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> <span class="string">'./lib/'</span> + vendor + <span class="string">'.js'</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-来认识一下-type-module-吧"><a href="#2-来认识一下-type-module-吧" class="headerlink" title="#2 来认识一下 type=module 吧"></a>#2 来认识一下 <code>type=module</code> 吧</h3><p>以上是 ES 标准模块的基础知识，这玩意属于标准先行，实现滞后，浏览器支持没有马上跟上。但正如本文一开始所说，好消息目前业界最新的几个主流浏览器 Chrome、Firefox、Safari、Microsoft Edge 都已经支持了，我们要学习的就是 <code>&lt;script&gt;</code> 标签的新属性：type=module。</p>
+<p>只要在常规 <code>&lt;script&gt;</code> 标签里，加上 <code>type=module</code> 属性，浏览器就会将这个脚本视为 ES 标准模块，并以模块的方式去加载、执行。</p>
+<p>一个简单的 Hello World 是这样子的：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- type-module.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">module</span> <span class="attr">src</span>=<span class="string">"./app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ./lib/math.js</span></span><br><span class="line"><span class="keyword">const</span> PI = <span class="number">3.14159</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; PI <span class="keyword">as</span> PI &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> math <span class="keyword">from</span> <span class="string">'./lib/math.js'</span>;</span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = <span class="string">`PI = <span class="subst">$&#123;math.PI&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+<p>打开 index.html 会发现页面内容如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/9/1647de1539daec9b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>可以从 Network 面板中看到资源请求过程，浏览器从 script.src 加载 app.js，在 Initiator 可以看到，app.js:1 发起了 math.js 的请求，即执行到 app.js 第一行 import 语句时去加载依赖模块 math.js。</p>
+<p>模块脚本中 JavaScript 语句的执行与常规 script 所加载的脚本一样，可以使用 DOM API，BOM API 等接口，但有一个值得注意的知识点是，作为模块加载的脚本不会像普通的 script 脚本一样<strong>污染全局作用域</strong>。</p>
+<p>例如我们的代码中 app.js 定义了函数 <code>sum</code>，math.js 定义了常量 <code>PI</code>，如果打开 Console 输入 PI 或 sum 浏览器会产生 ReferenceError 报错。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/9/1647de24a7fe8510?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p>（Finally…）</p>
+<h3 id="3-type-module-模块支持内联"><a href="#3-type-module-模块支持内联" class="headerlink" title="#3 type=module 模块支持内联"></a>#3 type=module 模块支持内联</h3><p>在我们以上的示例代码中，如果把 type-module.html 中引用的 app.js 代码改为内联 JavaScript，效果是一样的。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- type-module.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">module</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="keyword">import</span> * <span class="keyword">as</span> math <span class="keyword">from</span> <span class="string">'./lib/math.js'</span>;</span></span><br><span class="line"><span class="javascript">	        <span class="built_in">document</span>.body.innerHTML = <span class="string">`PI = <span class="subst">$&#123;math.PI&#125;</span>`</span>;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当然内联的模块脚本只在作为 “入口” 脚本加载时有意义，这样做可以免去一次下载 app.js 的 HTTP 请求，此时 import 语句所引用的 math.js 路径自然也需要修改为相对于 type-module.html 的路径。</p>
+<h3 id="4-默认-defer，支持-async"><a href="#4-默认-defer，支持-async" class="headerlink" title="#4 默认 defer，支持 async"></a>#4 默认 defer，支持 async</h3><p>细心的你可能注意到了，我们的 Hello World 示例中 script 标签写在 head 标签中，其中用到了 <code>document.body.innerHTML</code> 的 API 去操作 body，但无论是从外部加载脚本，还是内联在 script 标签中，浏览器都可以正常执行没有报错。</p>
+<p>这是因为 <code>&lt;script type=module&gt;</code> 默认拥有<strong>类似</strong> <code>defer</code> 的行为，所以<strong>脚本的执行不会阻塞页面渲染</strong>，因此会等待 document.body 可用时执行。</p>
+<blockquote>
+<p>之所以说 <strong>类似</strong> defer 而非确定，是因为我在浏览器 Console 中尝试检查默认 script 元素的 defer 属性（执行 <code>script.defer</code>），得到的结果是 false 而非 true。</p>
+</blockquote>
+<p>这就意味着如果有多个 <code>&lt;script type=module&gt;</code> 脚本，浏览器下载完成脚本之后不一定会立即执行，而是按照引入顺序先后执行。</p>
+<p>另外，与传统 script 标签类似，我们可以在 <code>&lt;script&gt;</code> 标签上写入 async 属性，从而使浏览器按照 async 的方式加载模块——<strong>下载完成后立即执行</strong>。</p>
+<h3 id="5-同一模块执行一次"><a href="#5-同一模块执行一次" class="headerlink" title="#5 同一模块执行一次"></a>#5 同一模块执行一次</h3><p>ES 模块被多次引用时只会执行一次，我们执行多次 import 语句获取到的内容是一样的。对于 HTML 中的 <code>&lt;script&gt;</code> 标签来说也一样，两个 script 标签先后导入同一个模块，只会执行一次。</p>
+<p>例如以下脚本读取 count 值并加一：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">const</span> el = <span class="built_in">document</span>.getElementById(<span class="string">'count'</span>);</span><br><span class="line"><span class="keyword">const</span> count = <span class="built_in">parseInt</span>(el.innerHTML.trim(), <span class="number">10</span>);</span><br><span class="line">el.innerHTML = count + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>如果重复引入 <code>&lt;script src=&quot;app.js&quot;&gt;</code> 只会执行一次 app.js 脚本，页面显示 <code>count: 1</code>：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- type-module.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">module</span> <span class="attr">src</span>=<span class="string">"app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">module</span> <span class="attr">src</span>=<span class="string">"app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        count: <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"count"</span>&gt;</span>0<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>问题来了？如何定义“同一个模块”呢，答案是相同的 URL，不仅包括 pathname 也包括 <code>?</code> 开始的参数字符串，所以如果我们给同一个脚本加上不同的参数，浏览器会认为这是两个不同的模块，从而会执行两次。</p>
+<p>如果将上面 HTML 代码中第二个 app.js 加上 url 参数：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">module</span> <span class="attr">src</span>=<span class="string">"app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">module</span> <span class="attr">src</span>=<span class="string">"app.js?foo=bar"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>浏览器会执行两次 app.js 脚本，页面显示 <code>count: 2</code>：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/9/1647de304d0547d8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<h3 id="6-CORS-跨域限制"><a href="#6-CORS-跨域限制" class="headerlink" title="#6 CORS 跨域限制"></a>#6 CORS 跨域限制</h3><p>我们知道常规的 script 标签有一个重要的特性是不受 CORS 限制，script.src 可以是任何非同域的脚本资源。正因此，我们早些年间利用这个特性“发明”了 JSONP 的方案来实现“跨域”。</p>
+<p>但是 type=module 的 script 标签加强了这方面的安全策略，浏览器加载不同域的脚本资源时，如果服务器未返回有效的 <code>Allow-Origin</code> 相关 CORS 头，浏览器会禁止加载改脚本。</p>
+<p>如下 HTML 通过 5501 端口 serve，而去加载 8082 端口的 app.js 脚本：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- http://localhost:5501/type-module.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">module</span> <span class="attr">src</span>=<span class="string">"http://localhost:8082/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        count: <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"count"</span>&gt;</span>0<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>浏览器会禁止加载这个 app.js 脚本。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/9/1647de32ba126a14?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<h3 id="7-MIME-类型"><a href="#7-MIME-类型" class="headerlink" title="#7 MIME 类型"></a>#7 MIME 类型</h3><p>浏览器请求远程资源时，可以根据 HTTP 返回头中的 <code>Content-Type</code> 确定所加载资源的 MIME 类型（脚本、HTML、图片格式等）。</p>
+<p>因为浏览器一直以来的宽容特性，对于常规的 script 标签来说，即使服务器端未返回 Content-Type 头指定脚本类型为 JavaScript，浏览器默认也会将脚本作为 JavaScript 解析和执行。</p>
+<p>但对于 type=module 类型的 script 标签，浏览器不再宽容。如果服务器端对远程脚本的 MIME 类型不属于有效的 JavaScript 类型，浏览器会禁止执行该脚本。</p>
+<p>用事实说话：如果我们把 app.js 重命名为 app.xyz，会发现页面会禁止执行这个脚本。因为在 Network 面板中可以看到浏览器返回的 Content-Type 头为 <code>chemical/x-xyz</code>，而非有效的 JavaScript 类型如：<code>text/javascript</code>。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"app.xyz"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    count: <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"count"</span>&gt;</span>0<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>页面内容依然是 <code>count: 0</code>，数值未被修改，可以在控制台和 Network 看到相关信息：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/9/1647de369a3441aa?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<h2 id="真实世界里的-ES-Module-实践"><a href="#真实世界里的-ES-Module-实践" class="headerlink" title="真实世界里的 ES Module 实践"></a>真实世界里的 ES Module 实践</h2><h3 id="向后兼容方案"><a href="#向后兼容方案" class="headerlink" title="向后兼容方案"></a>向后兼容方案</h3><p>OK 现在来聊现实——旧版本浏览器的兼容性问题，浏览器在处理 ES 模块时有非常巧妙的兼容性方案。</p>
+<p>首先在旧版浏览器中，在 HTML markup 的解析阶段遇到 <code>&lt;script type=&quot;module&quot;&gt;</code> 标签，浏览器认为这是自己不能支持的脚本格式，会直接忽略掉该标签；出于浏览器的宽恕性特点，并不会报错，而是静默地继续向下解析 HTML 余下的部分。</p>
+<p>所以针对旧版浏览器，我们还是需要新增一个传统的 <code>&lt;script&gt;</code> 标签加载 JS 脚本，以实现向后兼容。</p>
+<p>其次，而这种用于向后兼容的第二个 <code>&lt;script&gt;</code> 标签需要被新浏览器忽略，避免新浏览器重复执行同样的业务逻辑。</p>
+<p>为了解决这个问题，script 标签新增了一个 <code>nomodule</code> 属性。已支持 type=module 的浏览器版本，应当忽略带有 nomodule 属性的 script 标签，而旧版浏览器因为不认识该属性，所以它是无意义的，不会干扰浏览器以正常的逻辑去加载 script 标签中的脚本。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">nomodule</span> <span class="attr">src</span>=<span class="string">"fallback.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如上代码所示，新版浏览器加载第一个 script 标签，忽略第二个；旧版不支持 type=module 的浏览器则忽略第一个，加载第二个。</p>
+<p>相当优雅对不对？不需要自己手写特性检测的 JS 代码，直接使用 script 的属性即可。</p>
+<p>正因如此，进一步思考，我们可以大胆地得出这样的结论：</p>
+<blockquote>
+<p>不特性检验，我们<strong>可以立即在生产环境中</strong>使用 <code>&lt;script type=module&gt;</code></p>
+</blockquote>
+<h3 id="带来的益处"><a href="#带来的益处" class="headerlink" title="带来的益处"></a>带来的益处</h3><p>聊到这里，我们是时候来思考浏览器原生支持 ES 模块能给我们带来的实际好处了。</p>
+<h4 id="1-简化开发工作流"><a href="#1-简化开发工作流" class="headerlink" title="#1 简化开发工作流"></a>#1 简化开发工作流</h4><p>在前端工程化大行其道的今天，前端模块化开发已经是标配工作流。但是浏览器不支持 type=module 加载 ES 模板时，我们还是离不开 webpack 为核心的打包工具将本地模块化代码打包成 bundle 再加载。</p>
+<p>但由于最新浏览器对 <code>&lt;script type=module&gt;</code> 的天然支持，<strong>理论上</strong>我们的本地开发流可以完全脱离 webpack 这类 JS 打包工具了，只需要这样做：</p>
+<ol>
+<li>直接将 entry.js 文件使用 <code>&lt;script&gt;</code> 标签引用</li>
+<li>从 entry.js 到所有依赖的模块代码，全部采用 ES Module 方案实现</li>
+</ol>
+<p>当然，之所以说是<strong>理论上</strong>，是因为第 1 点很容易做到，第 2 点要求我们所有依赖代码都用 ES 模块化方案，在目前前端工程化生态圈中，我们的依赖管理是采用 npm 的，而 npm 包大部分是采用 CommonJS 标准而未兼容 ES 标准的。</p>
+<p>但毋庸置疑，只要能满足以上 2 点，本地开发可以轻松实现<strong>真正的模块化</strong>，这对我们的<strong>调试体验</strong>是相当大的改善，<code>webpack --watch</code>、source map 什么的见鬼去吧。</p>
+<p>现在你打开 devtools sg的 Source 面板就可以直接打断点了朋友！Just debug it！</p>
+<h4 id="2-作为检查新特性支持度的水位线"><a href="#2-作为检查新特性支持度的水位线" class="headerlink" title="#2 作为检查新特性支持度的水位线"></a>#2 作为检查新特性支持度的<em>水位线</em></h4><p>ES 模块可以作为一个天然的、非常靠谱的浏览器版本检验器，从而在检查其他很多新特性的支持度时，起到<strong>水位线</strong> 的作用。</p>
+<p>这里的逻辑其实非常简单，我们可以使用 caniuse 查到浏览器对 <code>&lt;script type=&quot;module&quot;&gt;</code> 的支持状况，很显然对浏览器版本要求很高。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~&gt; caniuse typemodule</span><br><span class="line">JavaScript modules via script tag ✔ 70.94% ◒ 0.99% [WHATWG Living Standard]</span><br><span class="line">  Loading JavaScript module scripts using `&lt;script type=&quot;module&quot;&gt;` Includes support for the `nomodule` attribute. #JS</span><br><span class="line"></span><br><span class="line">  IE ✘</span><br><span class="line">  Edge ✘ 12+ ✘ 15+¹ ✔ 16+</span><br><span class="line">  Firefox ✘ 2+ ✘ 54+² ✔ 60+</span><br><span class="line">  Chrome ✘ 4+ ✘ 60+¹ ✔ 61+</span><br><span class="line">  Safari ✘ 3.1+ ◒ 10.1+⁴ ✔ 11+</span><br><span class="line">  Opera ✘ 9+ ✘ 47+¹ ✔ 48+</span><br><span class="line"></span><br><span class="line">    ¹Support can be enabled via `about:flags`</span><br><span class="line">    ²Support can be enabled via `about:config`</span><br><span class="line">    ⁴Does not support the `nomodule` attribute</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>PS: 推荐一个 npm 工具：<a href="https://www.npmjs.com/package/caniuse-cmd" target="_blank" rel="noopener">caniuse-cmd</a>，调用 <code>npm i -g caniuse-cmd</code> 即可使用命令行快速查询 caniuse，支持模糊搜索哦</p>
+</blockquote>
+<p>这意味着，如果一个浏览器支持加载 ES 模块，其版本号一定大于以上表格中指定的这些版本。</p>
+<p>以 Chrome 为例，进一步思考，这也就意味着我们在 ES 模板的代码中可以<strong>脱离 polyfill</strong> 使用所有 Chrome 61 支持的特性。这个列表包含了相当丰富的<em>新</em>特性，其中有很多是我们在生产环境中不敢直接使用的，但有了 <code>&lt;script type=module&gt;</code> 的保证，什么 Service Worker，Promise，Cache API，Fetch API 等都可以大胆地往上怼了。</p>
+<blockquote>
+<p>这里是一张来自 Google 工程师 Sam Thorogood 在 Polymer Summit 2017 上的分享 <a href="https://www.youtube.com/watch?v=fIP4pjAqCtQ" target="_blank" rel="noopener">ES6 Modules in the Real World</a> 的 slides 截图，大致描述了当时几款主要浏览器对 type=module 与其他常见新特性支持度对比表格，可以帮我们了解个大概。</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/9/1647de395ddd83dc?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<h2 id="面临的挑战——重新思考前端构建"><a href="#面临的挑战——重新思考前端构建" class="headerlink" title="面临的挑战——重新思考前端构建"></a>面临的挑战——重新思考前端构建</h2><p>OK 现在是时候再来思考不那么好玩的部分了，软件开发没有银弹，今天我们讨论的 ES 模板也不例外。来看如果让浏览器原生引入 ES 模板可能带来的新的问题，以及给我们带来的新的挑战。</p>
+<h3 id="1-请求数量增加"><a href="#1-请求数量增加" class="headerlink" title="#1 请求数量增加"></a>#1 请求数量增加</h3><p>对于已支持 ES 模板的浏览器，如果我们从 script 标签开始引入 ES Module，就自然会面临这样的问题。假设我们有这样的依赖链，就意味着浏览器要先后加载 6 个模块：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">entry.js</span><br><span class="line">├──&gt; logger.js -&gt; util.js -&gt; lodash.js</span><br><span class="line">├──&gt; constants.js</span><br><span class="line">└──&gt; event.js -&gt; constants.js</span><br></pre></td></tr></table></figure>
+<p>对于传统的 HTTP 站点，这就意味着要发送 6 个独立的 HTTP 请求，与我们常规的性能优化实践背道而驰。</p>
+<p>因此这里的矛盾点实际是<strong>减少 HTTP 请求数</strong>与<strong>提高模块复用程度</strong>之间的矛盾：</p>
+<ul>
+<li>模块化开发模式下，随着代码自然增长会有越来越多模块</li>
+<li>模块越多，浏览器要发起的请求数也就越多</li>
+</ul>
+<p>面对这个矛盾，需要我们结合业务特点思考优化策略，做出折衷的决策或妥协。</p>
+<p>一个值得思考的方向是借助 HTTP 2 技术进行模块加载的优化。</p>
+<p>借助 Server Push 技术，可以选出应用中复用次数最多的公用模块，尽可能提早将这些模块 push 到浏览器端。例如在请求 HTML 时，服务器使用同一个连接将以上示例中的 util.js、lodash.js、constants.js 模块与 HTML 文档一并 push 到浏览器端，这样浏览器在需要加载这些模块时，可以免去再次主动发起请求的过程，直接执行。</p>
+<blockquote>
+<p>PS: 强烈推荐阅读 Jake Archibald 大神的文章：<a href="https://jakearchibald.com/2017/h2-push-tougher-than-i-thought/" target="_blank" rel="noopener">HTTP/2 push is tougher than I thought</a></p>
+</blockquote>
+<p>借助 HTTP/2 的合并请求和头部压缩功能，也可以改善请求数增加导致的加载变慢问题。</p>
+<p>当然使用 HTTP/2 就对我们的后端 HTTP 服务提供方提出了挑战，当然这也可以作为一个契机，推动我们学习和应用 HTTP/2 协议。</p>
+<blockquote>
+<p>PS：其他文章也有讨论使用prefetch 缓存机制来进行资源加载的优化，可以作为一个方向进一步探索</p>
+</blockquote>
+<h3 id="2-警惕依赖地狱——版本与缓存管理"><a href="#2-警惕依赖地狱——版本与缓存管理" class="headerlink" title="#2 警惕依赖地狱——版本与缓存管理"></a>#2 警惕依赖地狱——版本与缓存管理</h3><p>软件工程有一个著名的笑话：</p>
+<blockquote>
+<p>There are only two hard things in Computer Science: cache invalidation and naming things. </p>
+<p>– Phil Karlton</p>
+</blockquote>
+<p>可见缓存的管理是一件不应当被小看的事。</p>
+<p>传统上我们如何进行 JS 脚本的版本控制部署呢？结合 HTTP 缓存机制，一般的最佳实践是这样的：</p>
+<ul>
+<li>文件命名加上版本号</li>
+<li>设置 max-age 长缓存</li>
+<li>有版本更新时，修改文件名中的版本号部分，修改 script.src 路径</li>
+</ul>
+<p>如果我们每次只引入一两个稳定的 <code>*.js</code> 库脚本，再引入业务脚本 <code>bundle.xxx.js</code>，这样的实践可以说问题不大。</p>
+<p>但设想我们现在要直接向新版浏览器 ship ES 模块了，随着业务的发展，我们要管理的就是十几个甚至几十个依赖模块了，对于一个大型的站点来说，几十个页面，拥有几百个模块也一点不意外。</p>
+<p>依赖图谱这么复杂，模块数量这么多的情况下，JS 文件的缓存管理和版本更新还那么容易做么？</p>
+<p>例如我们有这样的依赖图谱：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./page-one/entry.js</span><br><span class="line">├──&gt; logger.js -&gt; util.js -&gt; lodash.js</span><br><span class="line">├──&gt; constants.js</span><br><span class="line">├──&gt; router.js -&gt; util.js</span><br><span class="line">└──&gt; event.js -&gt; util.js</span><br><span class="line"></span><br><span class="line">./page-two/entry.js</span><br><span class="line">├──&gt; logger.js -&gt; util.js -&gt; lodash.js</span><br><span class="line">└──&gt; router.js -&gt; constants.js</span><br></pre></td></tr></table></figure>
+<p>现在我们修改了一个公用组件 <code>util.js</code>，在生产环境，浏览器端存有旧版的 <code>util-1.0.0.js</code> 的长缓存，但由于 logger、router、event 组件都依赖 util 组件，这就意味着我们在生成 <code>util-1.1.0.js</code> 版本时，要相应修改其他组件中的 import 语句，也要修改 HTML 中的 <code>&lt;script&gt;</code> 标签。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// router-2.0.0.js -&gt; router-2.1.0.js</span><br><span class="line">import * as util from &apos;./util-1.1.0.js&apos;</span><br><span class="line"></span><br><span class="line">// page-one/entry-3.1.2.js -&gt; page-one/entry-3.2.0.js</span><br><span class="line">import * as util from &apos;./util-1.1.0.js&apos;</span><br><span class="line"></span><br><span class="line">// page-one.html</span><br><span class="line">&lt;script type=&quot;module&quot; src=&quot;./page-one/entry-3.2.0.js&quot;&gt;</span><br><span class="line"></span><br><span class="line">// ... page-two 相关脚本也要一起修改</span><br></pre></td></tr></table></figure>
+<p>这些依赖组件的版本号，沿着这个依赖图谱一直向上追溯，我们要一修改、重构。这个过程当然可以结合我们的构建工具实现，免去手动修改，需要我们开发构建工具插件或使用 npm scripts 脚本实现。</p>
+<h3 id="3-必须保持向后兼容"><a href="#3-必须保持向后兼容" class="headerlink" title="#3 必须保持向后兼容"></a>#3 必须保持向后兼容</h3><p>在上文我们已经提到这点，在实践中我们务必要记得在部署到生产环境时，依然要打包一份旧版浏览器可用的 bundle.js 文件，这一步是已有工作流，只需要给 script 标签加一个 nomodule 属性即可。</p>
+<p>那么问题来了，有时候为了尽可能减少页面发起请求的数量，我们会将关键 JS 脚本直接<strong>内联</strong>到 HTML markup 中，相比 <code>&lt;script src=...&gt;</code> 引入外部脚本的方式，再次减少了一次请求。</p>
+<p>如果我们采用 <code>&lt;nomodule&gt;</code> 属性的 script 标签，会被新版浏览器忽略，所以对于新版浏览器来说，这里 nomodule 脚本内容最好不要内联，否则徒增文件体积，却不会执行这部分脚本，why bother？</p>
+<p>所以这里 <code>&lt;script nomodule&gt;</code> 脚本是内联还是外联，依然要由开发者来做决策。</p>
+<h3 id="4-升级-CommonJS-模块为-ES-标准模块"><a href="#4-升级-CommonJS-模块为-ES-标准模块" class="headerlink" title="#4 升级 CommonJS 模块为 ES 标准模块"></a>#4 升级 CommonJS 模块为 ES 标准模块</h3><p>如果我们在生产环境使用 script 标签引入了 ES 标准模块，那么一定地，我们要把所有作为依赖模块、依赖库的代码都重构为 ES 模块的形式，而目前，前端生态的现状是：</p>
+<ul>
+<li>大部分依赖库模块都兼容 CommonJS 标准，少数才兼容 ES 标准。</li>
+<li>依赖包部署在 npm 上，安装在 node_modules 目录中。</li>
+<li>已有的业务代码采用 <code>require(${npm模块名})</code> 方式引用 node_modules 中的 package。</li>
+</ul>
+<p>给我们带来的挑战是：</p>
+<ul>
+<li>需重构大量 CommonJS 模块为 ES 标准模块，工作量大。</li>
+<li>需重构 node_modules <strong>包</strong> 的引用方式，使用相对路径方式引用。</li>
+</ul>
+<h3 id="5-别忘了压缩-ES-模块文件"><a href="#5-别忘了压缩-ES-模块文件" class="headerlink" title="#5 别忘了压缩 ES 模块文件"></a>#5 别忘了压缩 ES 模块文件</h3><p>生产环境部署传统 JS 静态资源的另一个重要的优化实践是 minify 处理代码，以减小文件体积，因为毋庸置疑文件越小传输越快。</p>
+<p>而如果我们要向新版浏览器 ship 原生 ES 模块，也不可忽略压缩 ES 模块文件这一点。</p>
+<p>OK 我们想到处理 ES5 代码时常用的大名鼎鼎的 uglify 了，不幸的是 uglify 对 ES6 代码的 minify 支持度并不乐观。目前 uglify 常用的场景，是我们先使用 babel 转义 ES6 代码得到 ES5 代码，再使用 uglify 去 minify ES5 代码。</p>
+<p>要压缩 ES6 代码，更好的选择是来自 babel 团队的 <a href="https://github.com/babel/minify" target="_blank" rel="noopener">babel-minify</a> （原名 Babili）。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/9/1647de3ba9ce4cd2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<h3 id="6-结论？"><a href="#6-结论？" class="headerlink" title="#6 结论？"></a>#6 结论？</h3><p>大神说写文章要有结论，聊到现在，我们惊喜地发现问题比好处的篇幅多得多（我有什么办法，我也很无奈啊）。</p>
+<p>所以我对浏览器加载 ES 模块的态度是：</p>
+<ul>
+<li>开发阶段，只要浏览器支持，尽管激进地使用！Just do it！</li>
+<li>不要丢掉 webpack 本地构建 bundle 那一套，本地构建依然是并将长期作为前端工程化的核心</li>
+<li>即使生产环境直接 serve 原生模块，也一样需要构建流程</li>
+<li>生产环境不要盲目使用，首先要设计出良好的依赖管理和缓存更新方案，并且部署好后端 HTTP/2 支持</li>
+</ul>
+<h2 id="ES-模块的未来？"><a href="#ES-模块的未来？" class="headerlink" title="ES 模块的未来？"></a>ES 模块的未来？</h2><p>有一说一，目前我们目前要在生产环境中拥抱 ES 模块，面临的挑战还不少，要让原生 ES Module 发挥其最大作用还需要很多细节上的优化，也需要踩过坑，方能沉淀出最佳实践。还是那句话——没有银弹。</p>
+<p>但是在前端模块化这一领域，ES 模块毫无疑问代表着未来。</p>
+<p>EcmaScript 标准委员会 TC39 也一直在推进模块标准的更新，关注标准发展的同学可以进一步去探索，一些值得提及的点包括：</p>
+<ul>
+<li><a href="https://github.com/tc39/proposal-dynamic-import" target="_blank" rel="noopener">tc39/proposal-dynamic-import</a> 动态导入特性支持，已进入 Stage 3 阶段</li>
+<li><a href="https://github.com/tc39/proposal-import-meta" target="_blank" rel="noopener">tc39/proposal-import-meta</a> 指定 import.meta 可以编程的方式，在代码中获取模块相关的元信息</li>
+<li><a href="https://github.com/tc39/tc39-module-keys" target="_blank" rel="noopener">tc39/tc39-module-keys</a> 用于第三方模块引用时，进行安全性方面的强化，现处于 Stage 1 阶段</li>
+<li><a href="https://github.com/tc39/proposal-modules-pragma" target="_blank" rel="noopener">tc39/proposal-modules-pragma</a> 类似 “user strict” 指令指明严格模式，使用 “use module” 指令来指定一个常规的文件以<strong>模块</strong>模式加载，现处于 Stage 1 阶段</li>
+<li><a href="https://github.com/tc39/proposal-module-get" target="_blank" rel="noopener">tc39/proposal-module-get</a> 类似 Object.defineProperty 定义某一个属性的 getter，允许 <code>export get prop() { return ... }</code> 这种语法实现动态导出</li>
+</ul>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li><a href="https://developers.google.com/web/fundamentals/primers/modules" target="_blank" rel="noopener">Using JavaScript modules on the web</a> Web Fundamentals 教程文章</li>
+<li><a href="https://www.youtube.com/watch?v=fIP4pjAqCtQ" target="_blank" rel="noopener">ES6 Modules in the Real World</a> Polymer Summit 2017 演讲视频（Youtube）</li>
+<li><a href="https://www.contentful.com/blog/2017/04/04/es6-modules-support-lands-in-browsers-is-it-time-to-rethink-bundling/" target="_blank" rel="noopener">ES6 modules support lands in browsers: is it time to rethink bundling?</a></li>
+<li><a href="https://caniuse.com/#feat=es6-module" target="_blank" rel="noopener">Can I use… JavaScript modules via script tag</a></li>
+<li><a href="https://www.youtube.com/watch?v=vAgKZoGIvqs" target="_blank" rel="noopener">How Well Do You Know the Web? (Google I/O ‘17)</a> Google I/O 2017 现场答题</li>
+<li><a href="https://zhuanlan.zhihu.com/p/25046637" target="_blank" rel="noopener">为什么 ES Module 的浏览器支持没有意义</a> —— 一些相反的声音，帮助思考与讨论</li>
+</ul>
+<blockquote>
+<p>题图来自：<a href="https://www.contentful.com/blog/2017/04/04/es6-modules-support-lands-in-browsers-is-it-time-to-rethink-bundling/" target="_blank" rel="noopener">Contentful</a></p>
+</blockquote>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2019/01/21/setting-up-https-on-personal-website/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/05/19/life-is-short-i-use-template-literals/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="rianma's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        mmg9403@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mmg9403@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/myan17" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/myan17" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>rianma
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
+
+
+
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
