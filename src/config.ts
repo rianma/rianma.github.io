@@ -1,10 +1,10 @@
 export const SITE = {
   website: "https://myan.im",
   author: "rianma",
-  profile: "",
+  profile: "https://myan.im",
   desc: "rianma's blog",
   title: "rianma",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "og.png",
   lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 4,

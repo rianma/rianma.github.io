@@ -32,7 +32,7 @@ curl http://118.24.121.85
 
 完成第 3 步后，本来期望的表现是访问 `http://c.myan.im` 也有同样的表现，但很不幸：
 
-![dnspod重定向截图](https://user-images.githubusercontent.com/8360265/51474517-96a48e00-1dba-11e9-9828-14ec264c841a.jpg)
+![dnspod重定向截图](./images/setting-up-https/dnspod-redirect.jpg)
 
 通过 curl 检查也可发现，http 请求返回的是 302 头，Location 头为 [https://dnspod.qcloud.com/static/block.html?d=c.myan.im](https://dnspod.qcloud.com/static/block.html?d=c.myan.im)
 
@@ -43,7 +43,7 @@ curl http://118.24.121.85
 < Location: https://dnspod.qcloud.com/static/block.html?d=c.myan.im
 ```
 
-![very-good](https://user-images.githubusercontent.com/8360265/51474862-90fb7800-1dbb-11e9-9b41-d9dcf1648229.png)
+![very-good](./images/setting-up-https/very-good.png)
 
 总算见识到了网站不备案的后果！可见我们把个人网站域名解析到国内主机，没有问题。但如果网站没有备案，对不起门都不让你进🤷。
 
@@ -68,7 +68,7 @@ HTTP 劫持案例
 
 从基本原理上讲，HTTPS 可以说是 HTTP 与 SSL/TLS 协议的结合。在进行应用层的报文传输前，要通过 TLS 协议建立加密会话。
 
-![tls-handshake](https://user-images.githubusercontent.com/8360265/51474880-a670a200-1dbb-11e9-92f4-14814a524820.png)
+![tls-handshake](./images/setting-up-https/tls-handshake.png)
 
 当然这个图的握手原理并不是本文的重点，我们关注的是所谓**证书**在 SSL 连接中的作用。在 Let’s Encrypt 的工具 certbot 文档页，他们这样解释什么是证书：
 
@@ -150,12 +150,12 @@ HTTP 劫持案例
     scp remote.host:/path/to/certificate.pem ~/local/path
     ```
     
-    ![Install Certificate](https://user-images.githubusercontent.com/8360265/51474954-edf72e00-1dbb-11e9-860a-276d0ba52b88.png)
+    ![Install Certificate](./images/setting-up-https/install-certificate.png)
     
 
 使用 Safari 浏览器查看，即发现已经可以访问了。
 
-![safari-self-signed-https](https://user-images.githubusercontent.com/8360265/51474964-f64f6900-1dbb-11e9-9c1c-a7a432f770eb.png)
+![safari-self-signed-https](./images/setting-up-https/safari-self-signed-https.png)
 
 > 如果使用 Chrome 浏览器访问，会发现还是会证书错误。这是因为 Chrome 58 后的版本，对自签名证书的安全性要求更高，需要更复杂的自签名过程。参考 [https://serverfault.com/questions/845766/generating-a-self-signed-cert-with-openssl-that-works-in-chrome-58](https://serverfault.com/questions/845766/generating-a-self-signed-cert-with-openssl-that-works-in-chrome-58)
 
@@ -309,7 +309,7 @@ Press Enter to Continue
 
 此时，我们需要停下来，登录 DNS 服务控制台，按照要求添加一条 TXT 类型的 DNS 记录。
 
-![add-txt-record](https://user-images.githubusercontent.com/8360265/51474554-b471f300-1dba-11e9-8854-59329af16d27.jpg)
+![add-txt-record](./images/setting-up-https/add-txt-record.jpg)
 
 使用以下命令可以验证
 
@@ -317,7 +317,7 @@ Press Enter to Continue
 dig -t txt _acme-challenge.subdomain.myan.im
 ```
 
-![acme-challenge-verify](https://user-images.githubusercontent.com/8360265/51474589-c8b5f000-1dba-11e9-82f8-573af6a7f84f.png)
+![acme-challenge-verify](./images/setting-up-https/acme-challenge-verify.png)
 
 点击 Enter，继续向下执行：
 
@@ -366,7 +366,7 @@ A. 子网站无需分开管理 B. 操作者拥有域名 DNS 管理权
 
 如下图是 youtube.com 网站的 SSL 证书 \*.google.com。
 
-![youtube-ssl](https://user-images.githubusercontent.com/8360265/51482425-5d2b4d00-1dd1-11e9-94d7-9b2785126705.png)
+![youtube-ssl](./images/setting-up-https/youtube-ssl.png)
 
 上面的例子中，我们使用 \*_.subdomain.myan.im_ 这样的 “通配符证书” 保护 subdomain.myan.im 的子域名，也是因为 SAN 特性的支持。
 
