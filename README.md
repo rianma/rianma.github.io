@@ -131,7 +131,11 @@ PUBLIC_UMAMI_WEBSITE_ID=your-website-id
 This renders the standard Umami tracking snippet:
 
 ```html
-<script defer src="https://cloud.umami.is/script.js" data-website-id="your-website-id"></script>
+<script
+  defer
+  src="https://cloud.umami.is/script.js"
+  data-website-id="your-website-id"
+></script>
 ```
 
 ## DevOps & CI/CD
