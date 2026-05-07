@@ -118,6 +118,22 @@ Set this environment variable to inject the verification tag into `<head>`:
 PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-value
 ```
 
+## Umami Analytics (optional)
+
+Set these environment variables to inject the Umami tracker into `<head>`:
+
+```bash
+# .env
+PUBLIC_UMAMI_SCRIPT_URL=https://cloud.umami.is/script.js
+PUBLIC_UMAMI_WEBSITE_ID=your-website-id
+```
+
+This renders the standard Umami tracking snippet:
+
+```html
+<script defer src="https://cloud.umami.is/script.js" data-website-id="your-website-id"></script>
+```
+
 ## DevOps & CI/CD
 
 ### Pipeline Overview
