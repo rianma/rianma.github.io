@@ -1,6 +1,10 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
+import {
+  PUBLIC_GOOGLE_SITE_VERIFICATION,
+  PUBLIC_UMAMI_WEBSITE_ID,
+  PUBLIC_UMAMI_SRC,
+} from "astro:env/client";
 import { SITE } from "@/config";
 import "@/styles/global.css";
 
@@ -129,6 +133,18 @@ const structuredData = {
     }
 
     <ClientRouter />
+
+    <!-- Umami Analytics -->
+    {
+      PUBLIC_UMAMI_WEBSITE_ID && (
+        <script
+          is:inline
+          async
+          src={PUBLIC_UMAMI_SRC ?? "https://analytics.umami.is/script.js"}
+          data-website-id={PUBLIC_UMAMI_WEBSITE_ID}
+        />
+      )
+    }
 
     <!-- Minimal inline script to prevent FOUC - sets theme immediately -->
     <script is:inline>

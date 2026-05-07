@@ -64,6 +64,16 @@ export default defineConfig({
         context: "client",
         optional: true,
       }),
+      PUBLIC_UMAMI_WEBSITE_ID: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
+      PUBLIC_UMAMI_SRC: envField.string({
+        access: "public",
+        context: "client",
+        optional: true,
+      }),
     },
   },
   experimental: {
